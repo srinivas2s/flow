@@ -9,10 +9,6 @@
   ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝ 
 ```
 
-  <img src="./docs/assets/banner.jpg" alt="FLOW - Focus, Logic, Orchestration & Workflow" width="100%" style="border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);" />
-
-  <br/><br/>
-
   # FLOW
   ### **Focus · Logic · Orchestration · Workflow**
 
@@ -86,7 +82,7 @@ flowchart LR
 
 | Phase | Responsibility | Operational Mechanism |
 | :--- | :--- | :--- |
-| **1. Capture** | Natural Input Ingestion | Unstructured thought dump via voice, quick prompt, or typed input |
+| **1. Capture** | Natural Input Ingestion | Unstructured thought dump via quick prompt or typed natural language |
 | **2. Understand** | Cognitive Parsing | Extracts task semantics, duration, dependencies, and urgency |
 | **3. Prioritize** | Dynamic Scoring | Weighs deadlines, energy levels, and available calendar buffers |
 | **4. Adaptive Plan** | Sequence Assembly | Generates a realistic, non-overlapping daily timeline |
@@ -247,11 +243,6 @@ flow/
 ├── README.md                    # Project manifesto, architecture & setup guide
 ├── .gitignore                   # Production ignore rules
 │
-├── docs/                        # Project documentation & visual assets
-│   └── assets/                  # Brand artwork, logo, diagrams & mockups
-│       ├── banner.jpg           # FLOW official project banner
-│       └── logo.jpg             # FLOW glassmorphic app icon
-│
 ├── frontend/                    # Next.js 15 Web Application
 │   ├── src/
 │   │   ├── app/                 # Next.js App Router
@@ -350,8 +341,6 @@ uvicorn app.main:app --reload --port 8000
 Distributed under the **MIT License**.
 
 <div align="center">
-  <br/>
-  <img src="./docs/assets/logo.jpg" alt="FLOW Icon" width="64" style="border-radius: 12px;" />
   <br/>
   <strong>FLOW — Focus, Logic, Orchestration & Workflow</strong><br/>
   <sub>Designed with precision for human cognitive clarity.</sub>

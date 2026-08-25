@@ -1,6 +1,6 @@
 import { Task, PlanItem, Memory, FocusSession, AIRecommendation } from '@/types';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 // Initial sample seed data for instant, reliable fallback
 export const INITIAL_TASKS: Task[] = [

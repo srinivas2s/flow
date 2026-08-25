@@ -5,6 +5,7 @@ import { LandingNavbar } from '@/components/landing/LandingNavbar';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { ChaosScene } from '@/components/landing/ChaosScene';
 import { FlowRevealScene } from '@/components/landing/FlowRevealScene';
+import { FeatureHighlightsSection } from '@/components/landing/FeatureHighlightsSection';
 import { AIUnderstandsScene } from '@/components/landing/AIUnderstandsScene';
 import { NextMoveScene } from '@/components/landing/NextMoveScene';
 import { AdaptivePlanScene } from '@/components/landing/AdaptivePlanScene';
@@ -14,18 +15,21 @@ import { FinalCTAScene } from '@/components/landing/FinalCTAScene';
 
 export default function LandingPage() {
   return (
-    <main className="relative min-h-screen bg-flow-bg text-flow-text-primary overflow-x-hidden selection:bg-flow-accent/20">
+    <main className="relative min-h-screen text-flow-text-primary overflow-x-hidden selection:bg-flow-accent/20">
       <LandingNavbar />
       
       <div>
         {/* Hero Section with Interactive State Comparator */}
         <HeroSection />
 
-        {/* Scene 01 & 02: Chaos & The Question */}
+        {/* Scene 01 & 02: Chaos & The Essential Question */}
         <ChaosScene />
 
-        {/* Scene 03: Meet FLOW Reveal */}
+        {/* Scene 03: Meet FLOW Story Format */}
         <FlowRevealScene />
+
+        {/* Comprehensive Feature Highlights Matrix */}
+        <FeatureHighlightsSection />
 
         {/* Scene 04: AI Understands Inputs */}
         <AIUnderstandsScene />

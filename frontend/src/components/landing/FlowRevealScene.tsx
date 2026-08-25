@@ -123,8 +123,6 @@ export const FlowRevealScene: React.FC = () => {
 
       {/* Vertical Story Flow Sequence */}
       <div className="relative space-y-16">
-        {/* Continuous background glowing connection beam */}
-        <div className="hidden sm:block absolute left-8 top-10 bottom-10 w-0.5 bg-gradient-to-b from-rose-500 via-flow-accent to-emerald-500 opacity-40" />
 
         {storySteps.map((item, idx) => {
           const Icon = item.icon;

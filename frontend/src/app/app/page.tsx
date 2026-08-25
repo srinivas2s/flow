@@ -6,8 +6,13 @@ import { Task, PlanItem, Memory, AIRecommendation } from '@/types';
 import { apiClient, calculateLocalRecommendation, INITIAL_TASKS, INITIAL_PLAN, INITIAL_MEMORIES } from '@/lib/api';
 import { Header } from '@/components/app/Header';
 import { BottomNav, TabType } from '@/components/app/BottomNav';
+import { SideNavDrawer, AppViewType } from '@/components/app/SideNavDrawer';
 import { HomeView } from '@/components/app/HomeView';
 import { TaskListView } from '@/components/app/TaskListView';
+import { CalendarView } from '@/components/app/CalendarView';
+import { MCPOrchestratorView } from '@/components/app/MCPOrchestratorView';
+import { DocumentIngestView } from '@/components/app/DocumentIngestView';
+import { EmailSyncView } from '@/components/app/EmailSyncView';
 import { PlanTimelineView } from '@/components/app/PlanTimelineView';
 import { BrainView } from '@/components/app/BrainView';
 import { AIAssistantDrawer } from '@/components/app/AIAssistantDrawer';
@@ -16,7 +21,7 @@ import { Suspense } from 'react';
 
 function AppShellContent() {
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<TabType>('home');
+  const [activeView, setActiveView] = useState<AppViewType>('home');
   
   // State
   const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
@@ -25,6 +30,7 @@ function AppShellContent() {
   const [recommendation, setRecommendation] = useState<AIRecommendation | null>(null);
 
   // Modals & Overlays
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [isAIOpen, setIsAIOpen] = useState(false);
   const [isFocusOpen, setIsFocusOpen] = useState(false);
   const [activeFocusTask, setActiveFocusTask] = useState<Task | null>(null);
@@ -107,25 +113,72 @@ function AppShellContent() {
     handleRecalculatePlan();
   };
 
+  const handleImportExtractedTasks = (extractedList: { title: string; deadline: string; duration: number; priority: 'high' | 'medium' | 'low' }[]) => {
+    extractedList.forEach((t) => {
+      handleAddTask({
+        title: t.title,
+        deadline: t.deadline,
+        estimated_minutes: t.duration,
+        priority: t.priority,
+        status: 'todo',
+      });
+    });
+    setActiveView('tasks');
+  };
+
+  const handleScheduleEmailTask = (title: string, deadline: string) => {
+    handleAddTask({
+      title,
+      deadline,
+      estimated_minutes: 45,
+      priority: 'high',
+      status: 'todo',
+    });
+    setActiveView('plan');
+  };
+
+  const viewTitles: Record<AppViewType, string> = {
+    home: 'Today & Next Move',
+    tasks: 'Tasks Matrix',
+    calendar: 'Calendar & Day Inspector',
+    mcp: 'AI MCP Orchestrator',
+    docs: 'Document Task Ingest',
+    email: 'Email Schedule Sync',
+    plan: 'Daily Sequence Plan',
+    brain: 'Brain Knowledge Graph',
+  };
+
+  // Convert AppViewType to TabType for BottomNav
+  const getBottomNavTab = (v: AppViewType): TabType => {
+    if (v === 'tasks') return 'tasks';
+    if (v === 'plan') return 'plan';
+    if (v === 'brain') return 'brain';
+    return 'home';
+  };
+
   return (
-    <div className="min-h-screen bg-flow-bg text-flow-text-primary flex flex-col selection:bg-flow-accent/20">
+    <div className="min-h-screen text-flow-text-primary flex flex-col selection:bg-flow-accent/20">
       {/* Top Header */}
-      <Header onOpenAI={() => setIsAIOpen(true)} />
+      <Header
+        onOpenAI={() => setIsAIOpen(true)}
+        onOpenMenu={() => setIsSideMenuOpen(true)}
+        currentViewTitle={viewTitles[activeView]}
+      />
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 pt-6 pb-20">
-        {activeTab === 'home' && (
+        {activeView === 'home' && (
           <HomeView
             tasks={tasks}
             plan={plan}
             recommendation={recommendation}
             onStartFocus={handleStartFocus}
-            onNavigateTab={(tab) => setActiveTab(tab)}
+            onNavigateTab={(tab) => setActiveView(tab)}
             onOpenAI={() => setIsAIOpen(true)}
           />
         )}
 
-        {activeTab === 'tasks' && (
+        {activeView === 'tasks' && (
           <TaskListView
             tasks={tasks}
             onToggleTask={handleToggleTask}
@@ -135,7 +188,28 @@ function AppShellContent() {
           />
         )}
 
-        {activeTab === 'plan' && (
+        {activeView === 'calendar' && (
+          <CalendarView
+            tasks={tasks}
+            plan={plan}
+            onStartFocus={handleStartFocus}
+            onAddTask={handleAddTask}
+          />
+        )}
+
+        {activeView === 'mcp' && (
+          <MCPOrchestratorView />
+        )}
+
+        {activeView === 'docs' && (
+          <DocumentIngestView onImportTasks={handleImportExtractedTasks} />
+        )}
+
+        {activeView === 'email' && (
+          <EmailSyncView onScheduleEmailTask={handleScheduleEmailTask} />
+        )}
+
+        {activeView === 'plan' && (
           <PlanTimelineView
             plan={plan}
             onRecalculate={handleRecalculatePlan}
@@ -143,17 +217,26 @@ function AppShellContent() {
           />
         )}
 
-        {activeTab === 'brain' && (
+        {activeView === 'brain' && (
           <BrainView
             memories={memories}
           />
         )}
       </main>
 
+      {/* Side Navigation Drawer */}
+      <SideNavDrawer
+        isOpen={isSideMenuOpen}
+        activeView={activeView}
+        onSelectView={(v) => setActiveView(v)}
+        onClose={() => setIsSideMenuOpen(false)}
+        onOpenAI={() => setIsAIOpen(true)}
+      />
+
       {/* Mobile Bottom Navigation */}
       <BottomNav
-        activeTab={activeTab}
-        onTabChange={(tab) => setActiveTab(tab)}
+        activeTab={getBottomNavTab(activeView)}
+        onTabChange={(tab) => setActiveView(tab)}
         onOpenAI={() => setIsAIOpen(true)}
       />
 
@@ -179,7 +262,7 @@ function AppShellContent() {
 
 export default function AppPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-flow-bg" />}>
+    <Suspense fallback={<div className="min-h-screen" />}>
       <AppShellContent />
     </Suspense>
   );

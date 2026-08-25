@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Logo } from '@/components/ui/Logo';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { Sparkles, Menu } from 'lucide-react';
-import Link from 'next/link';
 
 interface HeaderProps {
   onOpenAI?: () => void;
@@ -15,7 +13,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   onOpenAI,
   onOpenMenu,
-  currentViewTitle = 'Today',
+  currentViewTitle = 'Today & Next Move',
 }) => {
   const formattedDate = new Intl.DateTimeFormat('en-US', {
     weekday: 'short',
@@ -26,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-30 w-full glass-panel border-b border-flow-border/50 px-3 sm:px-6 py-2.5 sm:py-3 transition-all">
       <div className="max-w-5xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
           {/* Side Menu Drawer Toggle */}
           {onOpenMenu && (
             <button
@@ -38,13 +36,14 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
-          <Link href="/" className="transition-opacity hover:opacity-90 flex items-center gap-2">
-            <Logo size="sm" withText={true} />
-          </Link>
-
-          <div className="hidden md:flex flex-col ml-3 pl-3 border-l border-flow-border">
-            <span className="text-xs font-bold text-flow-text-primary">{currentViewTitle}</span>
-            <span className="text-[10px] text-flow-muted">{formattedDate}</span>
+          {/* Clean View Title & Date */}
+          <div className="flex flex-col">
+            <span className="text-xs sm:text-sm font-black text-flow-text-primary leading-tight">
+              {currentViewTitle}
+            </span>
+            <span className="text-[10px] text-flow-muted font-semibold">
+              {formattedDate}
+            </span>
           </div>
         </div>
 

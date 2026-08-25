@@ -2,12 +2,30 @@
   "name": "flow-monorepo",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "frontend"
-  ],
   "scripts": {
     "dev": "npm --workspace=frontend run dev",
     "build": "npm --workspace=frontend run build",
     "start": "npm --workspace=frontend run start"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "dependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^20.17.19",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "canvas-confetti": "^1.9.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.4.7",
+    "lucide-react": "^0.475.0",
+    "next": "^16.3.2",
+    "postcss": "^8.5.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
   }
 }

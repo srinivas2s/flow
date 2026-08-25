@@ -16,7 +16,7 @@ Traditional productivity suites operate as passive databases—static to-do list
 
 By ingesting unstructured thoughts, course syllabi, emails, and calendar commitments, FLOW automatically decomposes complex obligations into sequenced focus sprints, protects recovery buffers, and dynamically rebalances downstream schedules in real time when disruptions occur.
 
-Furthermore, with its **Missions & Dedicated Project Workspaces Hub**, FLOW allows users to manage macro-objectives (analogous to ChatGPT Projects or Linear Epics) with dedicated, self-contained execution environments featuring their own task backlogs, interactive milestone calendars, attached specs, and scoped AI co-pilots.
+Furthermore, with its **Missions & Dedicated Project Workspaces Hub** and **Cognitive Balance & Life-Mode Balancer**, FLOW allows users to manage macro-objectives and combine distinct lifestyle archetypes (e.g. *Academic Balance + Startup Founder*) to dynamically tune sprint lengths, buffer sizes, and execution rhythms.
 
 ---
 
@@ -76,12 +76,13 @@ FLOW introduces a **continuous, closed-loop autonomous productivity pipeline**:
  01. Today & Next Move Engine       Immediate single-point execution clarity with "Why Now?" reasoning.
  02. Tasks Matrix                   Subtask milestones, priority filters, and duration chips.
  03. Missions & Projects Hub        Self-contained project workspaces with dedicated sub-flows.
- 04. Calendar & Day Inspector       Interactive monthly/weekly grid with date-level inspection.
- 05. AI MCP Orchestrator            Gateway for Google Calendar, GitHub, Notion, Postgres, Brave Search.
- 06. Document & Data Ingest         Drag-and-drop syllabus/PDF parser to automated task backlogs.
- 07. Email Auto-Scheduler           Inbox scanner detecting deadlines with 1-click schedule saving.
- 08. Brain Knowledge Graph          Long-term memory index of habits, rhythms, and preferences.
- 09. Focus Chamber                  Mechanical stopwatch timer, milestone pins & Alpha wave audio.
+ 04. Cognitive Life-Mode Balancer   Select & combine archetypes (Academic, Startup, Deep Work, Crunch).
+ 05. Calendar & Day Inspector       Interactive monthly/weekly grid with date-level inspection.
+ 06. AI MCP Orchestrator            Gateway for Google Calendar, GitHub, Notion, Postgres, Brave Search.
+ 07. Document & Data Ingest         Drag-and-drop syllabus/PDF parser to automated task backlogs.
+ 08. Email Auto-Scheduler           Inbox scanner detecting deadlines with 1-click schedule saving.
+ 09. Brain Knowledge Graph          Long-term memory index of habits, rhythms, and preferences.
+ 10. Focus Chamber                  Mechanical stopwatch timer, milestone pins & Alpha wave audio.
 ========================================================================================
 ```
 
@@ -98,11 +99,20 @@ Organizes macro-objectives into self-contained project workspaces. Each Mission 
 - **Scoped Project AI Co-Pilot**: Conversational assistant pre-loaded with the mission's scope, syllabus, and technical requirements.
 - **1-Tap Focus Sprint Launcher**: Instant trigger for a 45-minute deep work session.
 
-### 4.3 Interactive Calendar & Day Inspector
+### 4.3 Cognitive Life-Mode Balancer & Synthesis
+Allows users to toggle and synthesize lifestyle modes to dynamically re-weight timeline buffers, sprint sizes, and focus ratios:
+- **Academic Balance**: 35-minute study sprints, active recall breaks, and spaced syllabus pacing.
+- **Startup & Founder Balance**: Rapid 25-minute execution blitzes, customer call flexibility, and high-velocity shipping.
+- **Engineering Deep Work**: 60–90 minute uninterrupted architecture and coding blocks with batched meeting windows.
+- **Exam & Launch Crunch**: High-urgency prioritization with compressed buffers for deliverables due in < 48 hours.
+- **Holistic & Life Balance**: Enforced hard stops at 6:30 PM, wellness recharge windows, and habit consistency protection.
+- **Multi-Mode Combination**: Synthesize dual modes (e.g. *Academic + Startup Founder*) to balance coursework with building a product.
+
+### 4.4 Interactive Calendar & Day Inspector
 - Combines a monthly calendar overview with date-level commitment indicators.
 - Clicking any date reveals a scheduled timeline of meetings, deadlines, and deep work blocks with quick-add capabilities.
 
-### 4.4 AI Model Context Protocol (MCP) Orchestrator
+### 4.5 AI Model Context Protocol (MCP) Orchestrator
 - Connects external developer and productivity tools into a unified agent gateway:
   - **Google Calendar MCP**: Free/busy slot analysis and schedule synchronization.
   - **GitHub MCP**: Pull requests, issue tracking, and code review monitoring.
@@ -111,19 +121,19 @@ Organizes macro-objectives into self-contained project workspaces. Each Mission 
   - **Brave Search MCP**: Real-time web research and citation lookup.
 - Includes a live multi-agent execution pipeline runner with interactive trace logs.
 
-### 4.5 Document & Syllabus Ingestion Automator
+### 4.6 Document & Syllabus Ingestion Automator
 - Drag-and-drop ingestion of academic syllabi, project briefs, and meeting notes (PDF, Markdown, Text).
 - Automatically parses and extracts milestones, deadlines, and time budgets, importing them into the task backlog with 1 click.
 
-### 4.6 Smart Email Auto-Scanner & Scheduler
+### 4.7 Smart Email Auto-Scanner & Scheduler
 - Ingests incoming communications from leads, professors, and teammates.
 - Identifies implied commitments and meeting requests, offering a 1-click **"Save to Schedule"** action that auto-balances the daily timeline.
 
-### 4.7 Distraction-Free Focus Chamber
+### 4.8 Distraction-Free Focus Chamber
 - A full-screen execution environment featuring a mechanical stopwatch countdown, milestone checklist pins, and optional ambient Alpha wave (40Hz) audio.
 - Triggers completion celebrations (`canvas-confetti`) upon milestone achievement.
 
-### 4.8 Personal Productivity Graph (Brain)
+### 4.9 Personal Productivity Graph (Brain)
 - Long-term memory index that tracks user work rhythms, decision patterns, and learned habits, continuously refining scheduling accuracy over time.
 
 ---

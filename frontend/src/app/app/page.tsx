@@ -10,6 +10,7 @@ import { SideNavDrawer, AppViewType } from '@/components/app/SideNavDrawer';
 import { HomeView } from '@/components/app/HomeView';
 import { TaskListView } from '@/components/app/TaskListView';
 import { MissionsView } from '@/components/app/MissionsView';
+import { BalanceModeView } from '@/components/app/BalanceModeView';
 import { CalendarView } from '@/components/app/CalendarView';
 import { MCPOrchestratorView } from '@/components/app/MCPOrchestratorView';
 import { DocumentIngestView } from '@/components/app/DocumentIngestView';
@@ -138,10 +139,16 @@ function AppShellContent() {
     setActiveView('plan');
   };
 
+  const handleApplyBalanceModes = (modes: string[]) => {
+    handleRecalculatePlan();
+    setActiveView('plan');
+  };
+
   const viewTitles: Record<AppViewType, string> = {
     home: 'Today & Next Move',
     tasks: 'Tasks Matrix',
     missions: 'Missions & Projects',
+    balance: 'Cognitive Life Modes',
     calendar: 'Calendar & Day Inspector',
     mcp: 'AI MCP Orchestrator',
     docs: 'Document Task Ingest',
@@ -194,6 +201,12 @@ function AppShellContent() {
           <MissionsView
             onStartFocus={handleStartFocus}
             onAddTask={handleAddTask}
+          />
+        )}
+
+        {activeView === 'balance' && (
+          <BalanceModeView
+            onApplyBalanceFlow={handleApplyBalanceModes}
           />
         )}
 

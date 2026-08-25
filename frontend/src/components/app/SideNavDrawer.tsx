@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Logo } from '@/components/ui/Logo';
-import { Home, CheckSquare, Calendar, Brain, Cpu, FileText, Mail, Clock, X, Sparkles, ShieldCheck, Rocket } from 'lucide-react';
+import { Home, CheckSquare, Calendar, Brain, Cpu, FileText, Mail, Clock, X, Sparkles, ShieldCheck, Rocket, Sliders } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export type AppViewType = 'home' | 'tasks' | 'missions' | 'calendar' | 'mcp' | 'docs' | 'email' | 'plan' | 'brain';
+export type AppViewType = 'home' | 'tasks' | 'missions' | 'balance' | 'calendar' | 'mcp' | 'docs' | 'email' | 'plan' | 'brain';
 
 interface SideNavDrawerProps {
   isOpen: boolean;
@@ -29,6 +29,7 @@ export const SideNavDrawer: React.FC<SideNavDrawerProps> = ({
         { id: 'home' as AppViewType, label: 'Today & Next Move', icon: Home, badge: 'Active' },
         { id: 'tasks' as AppViewType, label: 'Tasks Matrix', icon: CheckSquare },
         { id: 'missions' as AppViewType, label: 'Missions & Projects', icon: Rocket, badge: 'New' },
+        { id: 'balance' as AppViewType, label: 'Cognitive Life Modes', icon: Sliders, badge: 'Adaptive' },
         { id: 'calendar' as AppViewType, label: 'Calendar & Day Inspector', icon: Calendar },
         { id: 'plan' as AppViewType, label: 'Daily Sequence Plan', icon: Clock },
       ],

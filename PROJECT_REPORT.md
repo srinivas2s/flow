@@ -1,20 +1,22 @@
 # FLOW — Product & Architecture Executive Report
 ### Focus · Logic · Orchestration · Workflow
-**An AI Productivity Companion for Human Cognitive Clarity & Autonomous Execution**
+**An AI Productivity Companion for Human Cognitive Clarity, Autonomous Execution & Dedicated Project Pipelines**
 
 ---
 
 ## 1. Executive Summary
 
-Modern knowledge workers and students do not suffer from a lack of productivity tools; they suffer from **fragmentation and decision fatigue**. 
+Modern knowledge workers, engineers, and students do not suffer from a lack of productivity tools; they suffer from **severe fragmentation, context switching, and decision fatigue**. 
 
-Traditional productivity suites operate as passive databases—static to-do lists that expand indefinitely, calendar grids that require tedious manual rescheduling, and disconnected chatbots that lack real-time context. When a meeting runs long or an emergency arises, traditional schedules break down, inducing guilt and cognitive overload.
+Traditional productivity suites operate as passive databases—static to-do lists that expand indefinitely, calendar grids that require tedious manual rescheduling, and disconnected chatbots that lack real-time context. When an unexpected emergency arises or a meeting runs long, traditional schedules break down, inducing anxiety, guilt, and abandonment of the productivity system.
 
 **FLOW is designed as an active execution engine** that continuously answers one fundamental question:
 
 > **“What should I do right now?”**
 
 By ingesting unstructured thoughts, course syllabi, emails, and calendar commitments, FLOW automatically decomposes complex obligations into sequenced focus sprints, protects recovery buffers, and dynamically rebalances downstream schedules in real time when disruptions occur.
+
+Furthermore, with its **Missions & Dedicated Project Workspaces Hub**, FLOW allows users to manage macro-objectives (analogous to ChatGPT Projects or Linear Epics) with dedicated, self-contained execution environments featuring their own task backlogs, interactive milestone calendars, attached specs, and scoped AI co-pilots.
 
 ---
 
@@ -23,7 +25,7 @@ By ingesting unstructured thoughts, course syllabi, emails, and calendar commitm
 ### 2.1 The Crisis of Modern Work Fragmentation
 1. **Scattered Commitments**: Daily obligations are fragmented across email threads, slack messages, calendar invites, sticky notes, issue trackers, and course portals.
 2. **Decision Paralysis & Cognitive Overload**: Facing a backlog of 30+ unorganized tasks forces individuals to spend valuable mental energy deciding *what* to work on rather than actually *doing* the work.
-3. **The "Guilt Spiral" of Rigid Schedules**: When an unforeseen delay occurs, rigid time-blocking systems break. Overdue badges accumulate, leading to abandonment of the productivity system.
+3. **The "Guilt Spiral" of Rigid Schedules**: When an unforeseen delay occurs, rigid time-blocking systems break. Overdue badges accumulate, leading to frustration and disengagement.
 4. **Context-Switching Penalties**: Constant toggling between email, project documents, calendars, and timers fragments deep focus states.
 
 ```
@@ -67,16 +69,34 @@ FLOW introduces a **continuous, closed-loop autonomous productivity pipeline**:
 
 ## 4. Product Modules & Key Capabilities
 
+```
+========================================================================================
+ MODULE                             PURPOSE & CAPABILITIES
+========================================================================================
+ 01. Today & Next Move Engine       Immediate single-point execution clarity with "Why Now?" reasoning.
+ 02. Tasks Matrix                   Subtask milestones, priority filters, and duration chips.
+ 03. Missions & Projects Hub        Self-contained project workspaces with dedicated sub-flows.
+ 04. Calendar & Day Inspector       Interactive monthly/weekly grid with date-level inspection.
+ 05. AI MCP Orchestrator            Gateway for Google Calendar, GitHub, Notion, Postgres, Brave Search.
+ 06. Document & Data Ingest         Drag-and-drop syllabus/PDF parser to automated task backlogs.
+ 07. Email Auto-Scheduler           Inbox scanner detecting deadlines with 1-click schedule saving.
+ 08. Brain Knowledge Graph          Long-term memory index of habits, rhythms, and preferences.
+ 09. Focus Chamber                  Mechanical stopwatch timer, milestone pins & Alpha wave audio.
+========================================================================================
+```
+
 ### 4.1 "Your Next Move" Decision Engine
 - Eliminates prioritization fatigue by evaluating deadlines, calendar gaps, and cognitive energy to recommend the single highest-leverage task to execute right now.
 - Provides a transparent **"Why Now?"** reasoning explanation to reinforce clarity and intent.
 
-### 4.2 Missions & Projects Workspace Hub
-- Organizes macro-objectives (similar to ChatGPT Projects or Linear Epics) with dedicated project guardrails, milestones, and connected tools.
-- Automatically decomposes major initiatives into 3 execution phases:
-  - *Phase 1: Research & Requirements Breakdown*
-  - *Phase 2: Core Execution & Implementation*
-  - *Phase 3: Final Verification & Delivery*
+### 4.2 Missions & Dedicated Project Workspaces Hub
+Organizes macro-objectives into self-contained project workspaces. Each Mission features a dedicated multi-tab execution environment:
+- **Overview & Flow**: High-level progress tracking, strategic guardrails, and sequenced milestone phases (*Phase 1: Architecture* → *Phase 2: Implementation* → *Phase 3: Delivery*).
+- **Dedicated Mission Tasks**: Scoped backlog with subtasks, priority tags, and quick-add modals.
+- **Dedicated Interactive Calendar Grid**: Monthly grid with date-level inspection specifically highlighting that mission's deliverables and focus blocks.
+- **Connected Docs & Tools**: Repository of attached specs, SQL drafts, and active MCP tool connections.
+- **Scoped Project AI Co-Pilot**: Conversational assistant pre-loaded with the mission's scope, syllabus, and technical requirements.
+- **1-Tap Focus Sprint Launcher**: Instant trigger for a 45-minute deep work session.
 
 ### 4.3 Interactive Calendar & Day Inspector
 - Combines a monthly calendar overview with date-level commitment indicators.
@@ -87,7 +107,7 @@ FLOW introduces a **continuous, closed-loop autonomous productivity pipeline**:
   - **Google Calendar MCP**: Free/busy slot analysis and schedule synchronization.
   - **GitHub MCP**: Pull requests, issue tracking, and code review monitoring.
   - **Notion MCP**: Project specifications and documentation retrieval.
-  - **PostgreSQL MCP**: Structured database queries and metrics.
+  - **PostgreSQL MCP**: Structured database queries and schema inspection.
   - **Brave Search MCP**: Real-time web research and citation lookup.
 - Includes a live multi-agent execution pipeline runner with interactive trace logs.
 
@@ -113,11 +133,12 @@ FLOW introduces a **continuous, closed-loop autonomous productivity pipeline**:
 | Element | Design Standard | Implementation Detail |
 | :--- | :--- | :--- |
 | **Aesthetic System** | Modern Tactile Neumorphism | Dual-directional lighting, micro-rim highlights, recessed wells, physical button deboss. |
+| **Button Geometry** | Smooth Capsule Rectangles | Pill-shaped `rounded-full` surfaces with soft multi-layer shadow depth. |
 | **Light Theme** | Warm Ivory & Alabaster (`#F7F5F0`) | Soft museum-grade paper tone that eliminates harsh white glare. |
 | **Dark Theme** | Obsidian Black + White Architectural Grid (`#07080A`) | High-definition `28px` precision grid with subtle indigo ambient aura glow. |
 | **Iconography** | Zero Unicode Emojis | 100% clean vector icons via Lucide React for an industrial, professional feel. |
 | **Navigation** | Ultra-Slim Bottom Dock + Side Drawer | Flush, compact floating dock paired with an expandable multi-module slide-over drawer. |
-| **Loading State** | Minimalist Serene Screen | Clean FLOW wordmark with a slow, smooth ambient progress track (`2.2s`). |
+| **Page Rendering** | Instant Direct Rendering | Zero loading screen latency for immediate, responsive user transitions. |
 
 ---
 
@@ -141,6 +162,6 @@ FLOW introduces a **continuous, closed-loop autonomous productivity pipeline**:
 
 ---
 
-## 7. Strategic Impact & Summary
+## 7. Strategic Impact & Conclusion
 
-FLOW transforms productivity from a stressful task-tracking chore into an **autonomous cognitive co-pilot**. By combining natural language ingestion, Model Context Protocol tool integrations, and dynamic schedule rebalancing, FLOW ensures that users spend zero energy agonizing over plans and maximum energy achieving flow-state execution.
+FLOW transforms productivity from a stressful task-tracking chore into an **autonomous cognitive co-pilot**. By combining natural language ingestion, Model Context Protocol tool integrations, dedicated mission project workspaces, and dynamic schedule rebalancing, FLOW ensures that users spend zero energy agonizing over plans and maximum energy achieving flow-state execution.

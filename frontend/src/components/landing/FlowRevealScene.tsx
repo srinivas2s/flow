@@ -108,10 +108,6 @@ export const FlowRevealScene: React.FC = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-20"
       >
-        <div className="flex justify-center mb-4">
-          <Logo size="lg" withText={false} animate={true} />
-        </div>
-
         <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-flow-text-primary tracking-tight">
           The <span className="text-flow-accent">FLOW</span> Story.
         </h2>

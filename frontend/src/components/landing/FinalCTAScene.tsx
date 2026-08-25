@@ -21,8 +21,6 @@ export const FinalCTAScene: React.FC = () => {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10 max-w-xl mx-auto flex flex-col items-center"
       >
-        <Logo size="xl" withText={false} animate={true} />
-
         <h2 className="text-4xl sm:text-6xl font-black text-flow-text-primary tracking-tight mt-6">
           FLOW
         </h2>

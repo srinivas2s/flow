@@ -15,16 +15,21 @@ import {
   Sparkles, 
   ArrowRight, 
   ChevronRight, 
+  ChevronLeft,
   Play, 
   Check, 
   CheckSquare, 
   Bot, 
   Send, 
   Layers, 
-  ChevronLeft,
-  Target,
-  Zap,
-  Trash2
+  FileText,
+  Database,
+  Code2,
+  TrendingUp,
+  Cpu,
+  BarChart2,
+  BookOpen,
+  FolderOpen
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -93,7 +98,10 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
 
   // Selected Mission and its dedicated sub-tab
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
-  const [missionTab, setMissionTab] = useState<'overview' | 'tasks' | 'calendar' | 'ai'>('overview');
+  const [missionTab, setMissionTab] = useState<'overview' | 'tasks' | 'calendar' | 'docs' | 'ai'>('overview');
+
+  // Mission Calendar Selected Date State
+  const [selectedCalendarDay, setSelectedCalendarDay] = useState<number>(25);
 
   // Mission-Dedicated Tasks Mock Store
   const [missionTasks, setMissionTasks] = useState<Record<string, Task[]>>({
@@ -118,13 +126,54 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
     ],
   });
 
+  // Dedicated Mission Documents & Knowledge
+  const [missionDocs, setMissionDocs] = useState<Record<string, { title: string; size: string; type: string; updated: string }[]>>({
+    'm-1': [
+      { title: 'DBMS_Course_Syllabus_Fall2026.pdf', size: '2.4 MB', type: 'PDF Document', updated: 'Aug 15' },
+      { title: 'Relational_Schema_Design_Draft.sql', size: '18 KB', type: 'SQL Schema', updated: 'Aug 24' },
+      { title: 'Normalization_Proof_Notes.md', size: '12 KB', type: 'Markdown Notes', updated: 'Aug 25' },
+    ],
+    'm-2': [
+      { title: 'Design_System_Specification.md', size: '34 KB', type: 'Architecture Spec', updated: 'Aug 20' },
+      { title: 'Vercel_Serverless_Routing_Config.json', size: '4 KB', type: 'Config', updated: 'Aug 24' },
+      { title: 'QA_Checklist_and_Audit.md', size: '16 KB', type: 'Audit Log', updated: 'Aug 25' },
+    ],
+    'm-3': [
+      { title: 'System_Design_Whiteboard_Templates.pdf', size: '4.8 MB', type: 'PDF Guide', updated: 'Aug 18' },
+      { title: 'Distributed_Systems_Tradeoffs.md', size: '28 KB', type: 'Study Guide', updated: 'Aug 24' },
+    ],
+  });
+
+  // Dedicated Mission Calendar Events by day (August 2026)
+  const missionCalendarEvents: Record<string, Record<number, { title: string; time: string; type: 'sprint' | 'review' | 'deadline' }[]>> = {
+    'm-1': {
+      22: [{ title: 'Phase 1 Functional Dependencies Verification', time: '10:00 AM', type: 'review' }],
+      24: [{ title: 'Minimal Cover Dependency Computation Sprint', time: '02:00 PM', type: 'sprint' }],
+      25: [{ title: '3NF & BCNF Decomposition Deep Work', time: '04:45 PM', type: 'sprint' }],
+      26: [{ title: 'Lossless Join Algorithm Testing', time: '11:00 AM', type: 'sprint' }],
+      28: [{ title: 'Final Normalization PDF Portal Submission', time: '05:00 PM', type: 'deadline' }],
+    },
+    'm-2': {
+      18: [{ title: 'Neumorphic Token Migration Sprint', time: '09:00 AM', type: 'sprint' }],
+      21: [{ title: 'FastAPI Recommendation Testing', time: '02:30 PM', type: 'sprint' }],
+      24: [{ title: 'Vercel Serverless Integration Review', time: '04:00 PM', type: 'review' }],
+      25: [{ title: 'FLOW v1.0 Production Launch Sprint', time: '08:00 PM', type: 'deadline' }],
+    },
+    'm-3': {
+      21: [{ title: 'Consistent Hashing Theory Sprint', time: '01:00 PM', type: 'sprint' }],
+      24: [{ title: 'Distributed Rate Limiter Implementation', time: '06:00 PM', type: 'sprint' }],
+      25: [{ title: 'Gossip Protocol Architecture Session', time: '08:00 PM', type: 'sprint' }],
+      30: [{ title: 'Mock Interview Session 1: Large Scale Cache', time: '05:00 PM', type: 'review' }],
+    },
+  };
+
   // Dedicated Mission AI Chat Messages
   const [missionChat, setMissionChat] = useState<Record<string, { sender: 'user' | 'ai'; text: string }[]>>({
     'm-1': [
-      { sender: 'ai', text: 'Hello! I am your dedicated DBMS Project Co-pilot. I have your relational schema and syllabus loaded. What would you like to review or execute?' },
+      { sender: 'ai', text: 'Hello! I am your dedicated DBMS Project Co-pilot. I have your relational schema, syllabus, and 3NF/BCNF decomposition requirements loaded. What would you like to execute or clarify?' },
     ],
     'm-2': [
-      { sender: 'ai', text: 'FLOW v1.0 Launch Workspace active. Connected to GitHub MCP and Vercel build status. All core modules verified.' },
+      { sender: 'ai', text: 'FLOW v1.0 Production Workspace active. Connected to GitHub MCP and Vercel build status. All core modules and design tokens verified.' },
     ],
     'm-3': [
       { sender: 'ai', text: 'System Design Interview Hub active. Ready to simulate architectural trade-offs, capacity estimations, and distributed systems deep dives.' },
@@ -200,7 +249,6 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
           : t
       );
       
-      // Update mission progress
       const completedCount = updated.filter((t) => t.status === 'completed').length;
       const progress = Math.round((completedCount / updated.length) * 100);
       setMissions((mPrev) =>
@@ -233,7 +281,6 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
       [selectedMission.id]: [...(prev[selectedMission.id] || []), newTask],
     }));
 
-    // Also push to general backlog
     onAddTask(newTask);
 
     setNewMissionTaskTitle('');
@@ -254,9 +301,9 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
     setChatInput('');
 
     setTimeout(() => {
-      let aiResponse = `I've analyzed your request for "${selectedMission.title}". I recommend executing the active phase milestone next to maintain project velocity.`;
+      let aiResponse = `I've analyzed your project parameters for "${selectedMission.title}". I recommend tackling the active milestone sprint to keep downstream deadlines safe.`;
       if (currentMsg.toLowerCase().includes('task') || currentMsg.toLowerCase().includes('do')) {
-        aiResponse = `For "${selectedMission.title}", your next highest priority task is scheduled for a 45-minute focus window. Would you like to start a focus sprint?`;
+        aiResponse = `For "${selectedMission.title}", your next highest priority sprint is queued. Ready to launch a focus session?`;
       }
       setMissionChat((prev) => ({
         ...prev,
@@ -266,7 +313,10 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
   };
 
   const currentMissionTasksList = selectedMission ? missionTasks[selectedMission.id] || [] : [];
+  const currentMissionDocsList = selectedMission ? missionDocs[selectedMission.id] || [] : [];
   const currentMissionChatList = selectedMission ? missionChat[selectedMission.id] || [] : [];
+  const currentMissionCalendar = selectedMission ? missionCalendarEvents[selectedMission.id] || {} : {};
+  const selectedDayEvents = currentMissionCalendar[selectedCalendarDay] || [];
 
   return (
     <div className="space-y-6 pb-28 max-w-3xl mx-auto px-1">
@@ -343,47 +393,57 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
       {selectedMission ? (
         <div className="space-y-5">
           {/* Mission Sub-Navigation Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-2xl neu-pressed">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 p-1 rounded-2xl neu-pressed">
             <button
               onClick={() => setMissionTab('overview')}
-              className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`py-2 px-2 rounded-xl text-xs font-bold transition-all text-center ${
                 missionTab === 'overview'
                   ? 'neu-raised text-flow-accent shadow-sm'
                   : 'text-flow-text-secondary hover:text-flow-text-primary'
               }`}
             >
-              Overview & Flow
+              Overview
             </button>
             <button
               onClick={() => setMissionTab('tasks')}
-              className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`py-2 px-2 rounded-xl text-xs font-bold transition-all text-center ${
                 missionTab === 'tasks'
                   ? 'neu-raised text-flow-accent shadow-sm'
                   : 'text-flow-text-secondary hover:text-flow-text-primary'
               }`}
             >
-              Mission Tasks ({currentMissionTasksList.length})
+              Tasks ({currentMissionTasksList.length})
             </button>
             <button
               onClick={() => setMissionTab('calendar')}
-              className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`py-2 px-2 rounded-xl text-xs font-bold transition-all text-center ${
                 missionTab === 'calendar'
                   ? 'neu-raised text-flow-accent shadow-sm'
                   : 'text-flow-text-secondary hover:text-flow-text-primary'
               }`}
             >
-              Schedule
+              Calendar
+            </button>
+            <button
+              onClick={() => setMissionTab('docs')}
+              className={`py-2 px-2 rounded-xl text-xs font-bold transition-all text-center ${
+                missionTab === 'docs'
+                  ? 'neu-raised text-flow-accent shadow-sm'
+                  : 'text-flow-text-secondary hover:text-flow-text-primary'
+              }`}
+            >
+              Docs & Tools
             </button>
             <button
               onClick={() => setMissionTab('ai')}
-              className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 ${
+              className={`py-2 px-2 rounded-xl text-xs font-bold transition-all text-center flex items-center justify-center gap-1 ${
                 missionTab === 'ai'
                   ? 'neu-raised text-flow-accent shadow-sm'
                   : 'text-flow-text-secondary hover:text-flow-text-primary'
               }`}
             >
               <Bot className="w-3.5 h-3.5" />
-              <span>Project AI</span>
+              <span>Co-Pilot</span>
             </button>
           </div>
 
@@ -408,7 +468,7 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
                 {/* Progress Bar */}
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between text-xs font-bold">
-                    <span className="text-flow-muted uppercase tracking-wider">Phase Milestones</span>
+                    <span className="text-flow-muted uppercase tracking-wider">Milestone Progress</span>
                     <span className="text-flow-accent">{selectedMission.progress}% Done</span>
                   </div>
                   <div className="w-full h-2 rounded-full neu-pressed overflow-hidden">
@@ -553,63 +613,180 @@ export const MissionsView: React.FC<MissionsViewProps> = ({ onStartFocus, onAddT
             </motion.div>
           )}
 
-          {/* Sub-Tab 3: Mission-Dedicated Calendar / Timeline */}
+          {/* Sub-Tab 3: Mission-Dedicated Interactive Calendar Grid */}
           {missionTab === 'calendar' && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="neu-card p-5 sm:p-6 border border-flow-border/80 shadow-xl space-y-4"
+              className="space-y-4"
             >
-              <div className="flex items-center justify-between pb-3 border-b border-flow-border/60">
-                <div className="flex items-center gap-2">
-                  <CalendarIcon className="w-4 h-4 text-flow-accent" />
-                  <h3 className="text-xs sm:text-sm font-bold text-flow-text-primary">
-                    {selectedMission.title} Milestone Timeline
-                  </h3>
+              {/* Mission Calendar Month Grid */}
+              <div className="neu-card p-5 sm:p-6 border border-flow-border/80 shadow-xl">
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-flow-border/60">
+                  <div className="flex items-center gap-2">
+                    <CalendarIcon className="w-4 h-4 text-flow-accent" />
+                    <h3 className="text-sm font-black text-flow-text-primary">
+                      {selectedMission.title} • August 2026 Schedule
+                    </h3>
+                  </div>
+                  <Badge variant="accent" size="sm">
+                    Target: {selectedMission.target_deadline}
+                  </Badge>
                 </div>
-                <Badge variant="accent" size="sm">
-                  Target: {selectedMission.target_deadline}
-                </Badge>
+
+                {/* Day headers */}
+                <div className="grid grid-cols-7 gap-1 text-center mb-2">
+                  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
+                    <span key={d} className="text-[10px] font-black uppercase text-flow-muted">
+                      {d}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Days Grid (August 2026: 31 days, offset 6) */}
+                <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <div key={`m-offset-${i}`} className="h-9 sm:h-11 opacity-0 pointer-events-none" />
+                  ))}
+
+                  {Array.from({ length: 31 }).map((_, i) => {
+                    const dayNum = i + 1;
+                    const isSelected = selectedCalendarDay === dayNum;
+                    const hasEvents = !!currentMissionCalendar[dayNum];
+                    const isToday = dayNum === 25;
+
+                    return (
+                      <button
+                        key={`m-day-${dayNum}`}
+                        onClick={() => setSelectedCalendarDay(dayNum)}
+                        className={`h-9 sm:h-11 rounded-xl flex flex-col items-center justify-center transition-all ${
+                          isSelected
+                            ? 'neu-pressed border border-flow-accent/60 bg-flow-accent/10 font-black text-flow-accent shadow-inner'
+                            : isToday
+                            ? 'neu-raised border border-flow-accent/40 font-black text-flow-accent'
+                            : 'neu-raised hover:scale-[1.03]'
+                        }`}
+                      >
+                        <span className="text-xs font-bold">{dayNum}</span>
+                        {hasEvents && (
+                          <div className="w-1.5 h-1.5 rounded-full bg-flow-accent mt-0.5" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="p-3.5 rounded-2xl neu-raised flex items-center justify-between border border-flow-border/60">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-black text-flow-accent w-16">Aug 22</span>
-                    <div>
-                      <span className="text-xs font-bold text-flow-text-primary block">Phase 1 Complete</span>
-                      <span className="text-[10px] text-flow-muted">Keys and schema established</span>
-                    </div>
-                  </div>
-                  <Badge variant="success" size="sm">Verified</Badge>
+              {/* Day Inspector for Selected Date in Mission */}
+              <div className="neu-card p-4 sm:p-5 border border-flow-border/80 shadow-xl">
+                <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-flow-border/60">
+                  <span className="text-xs font-bold text-flow-text-primary">
+                    August {selectedCalendarDay}, 2026 • Project Events
+                  </span>
+                  <span className="text-[10px] text-flow-muted font-semibold">
+                    {selectedDayEvents.length} items scheduled
+                  </span>
                 </div>
 
-                <div className="p-3.5 rounded-2xl neu-pressed flex items-center justify-between border border-flow-accent/40 bg-flow-accent/5">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-black text-flow-accent w-16">Aug 26</span>
-                    <div>
-                      <span className="text-xs font-bold text-flow-text-primary block">Phase 2 Sprint</span>
-                      <span className="text-[10px] text-flow-text-secondary">3NF & BCNF Decomposition Tables</span>
-                    </div>
+                {selectedDayEvents.length === 0 ? (
+                  <div className="py-6 text-center neu-pressed rounded-xl text-xs text-flow-muted">
+                    No dedicated project sprints scheduled on August {selectedCalendarDay}.
                   </div>
-                  <Badge variant="accent" size="sm">Active</Badge>
+                ) : (
+                  <div className="space-y-2">
+                    {selectedDayEvents.map((evt, idx) => (
+                      <div
+                        key={idx}
+                        className="p-3 rounded-xl neu-raised flex items-center justify-between gap-3 border border-flow-border/60"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs font-black text-flow-accent w-16 shrink-0">{evt.time}</span>
+                          <span className="text-xs font-bold text-flow-text-primary">{evt.title}</span>
+                        </div>
+                        <Badge
+                          variant={evt.type === 'deadline' ? 'danger' : evt.type === 'review' ? 'warning' : 'accent'}
+                          size="sm"
+                          className="text-[10px]"
+                        >
+                          {evt.type.toUpperCase()}
+                        </Badge>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Sub-Tab 4: Mission Documents & Connected MCP Tools */}
+          {missionTab === 'docs' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-4"
+            >
+              <div className="neu-card p-5 sm:p-6 border border-flow-border/80 shadow-xl space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-flow-border/60">
+                  <div className="flex items-center gap-2">
+                    <FolderOpen className="w-4 h-4 text-flow-accent" />
+                    <h3 className="text-xs sm:text-sm font-bold text-flow-text-primary">
+                      Connected Project Documents & Knowledge
+                    </h3>
+                  </div>
+                  <span className="text-[10px] text-flow-muted font-bold">
+                    {currentMissionDocsList.length} files attached
+                  </span>
                 </div>
 
-                <div className="p-3.5 rounded-2xl neu-flat flex items-center justify-between border border-flow-border/40 opacity-70">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-black text-flow-muted w-16">Aug 28</span>
-                    <div>
-                      <span className="text-xs font-bold text-flow-text-primary block">Phase 3 Final Delivery</span>
-                      <span className="text-[10px] text-flow-muted">Upload PDF submission</span>
+                <div className="space-y-2.5">
+                  {currentMissionDocsList.map((doc, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3.5 rounded-2xl neu-raised flex items-center justify-between gap-3 border border-flow-border/60 hover:scale-[1.01] transition-transform"
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="w-8 h-8 rounded-xl neu-pressed flex items-center justify-center text-flow-accent shrink-0">
+                          <FileText className="w-4 h-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <span className="text-xs font-bold text-flow-text-primary block truncate">
+                            {doc.title}
+                          </span>
+                          <span className="text-[10px] text-flow-muted">
+                            {doc.type} • {doc.size} • Updated {doc.updated}
+                          </span>
+                        </div>
+                      </div>
+
+                      <Badge variant="neutral" size="sm">
+                        Attached
+                      </Badge>
                     </div>
-                  </div>
-                  <Badge variant="neutral" size="sm">Scheduled</Badge>
+                  ))}
+                </div>
+              </div>
+
+              {/* Connected MCP Tools */}
+              <div className="neu-card p-5 border border-flow-border/80 shadow-xl space-y-3">
+                <span className="text-xs font-bold text-flow-muted uppercase tracking-wider block">
+                  Connected MCP Tools for this Mission
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {selectedMission.connectedTools.map((t, idx) => (
+                    <div
+                      key={idx}
+                      className="px-3.5 py-1.5 rounded-xl neu-pressed text-xs font-bold text-flow-text-primary flex items-center gap-2"
+                    >
+                      <Cpu className="w-3.5 h-3.5 text-flow-accent" />
+                      <span>{t}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
           )}
 
-          {/* Sub-Tab 4: Mission-Dedicated AI Co-Pilot */}
+          {/* Sub-Tab 5: Mission-Dedicated AI Co-Pilot */}
           {missionTab === 'ai' && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}

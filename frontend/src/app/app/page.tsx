@@ -9,6 +9,7 @@ import { BottomNav, TabType } from '@/components/app/BottomNav';
 import { SideNavDrawer, AppViewType } from '@/components/app/SideNavDrawer';
 import { HomeView } from '@/components/app/HomeView';
 import { TaskListView } from '@/components/app/TaskListView';
+import { MissionsView } from '@/components/app/MissionsView';
 import { CalendarView } from '@/components/app/CalendarView';
 import { MCPOrchestratorView } from '@/components/app/MCPOrchestratorView';
 import { DocumentIngestView } from '@/components/app/DocumentIngestView';
@@ -140,6 +141,7 @@ function AppShellContent() {
   const viewTitles: Record<AppViewType, string> = {
     home: 'Today & Next Move',
     tasks: 'Tasks Matrix',
+    missions: 'Missions & Projects',
     calendar: 'Calendar & Day Inspector',
     mcp: 'AI MCP Orchestrator',
     docs: 'Document Task Ingest',
@@ -185,6 +187,13 @@ function AppShellContent() {
             onAddTask={handleAddTask}
             onDeleteTask={handleDeleteTask}
             onStartFocus={handleStartFocus}
+          />
+        )}
+
+        {activeView === 'missions' && (
+          <MissionsView
+            onStartFocus={handleStartFocus}
+            onAddTask={handleAddTask}
           />
         )}
 

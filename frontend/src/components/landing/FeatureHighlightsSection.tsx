@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { 
+  Rocket,
   CheckSquare, 
   Calendar, 
   Cpu, 
@@ -26,6 +27,22 @@ export const FeatureHighlightsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const features = [
+    {
+      id: 'missions',
+      title: 'Missions & Projects',
+      tagline: 'Dedicated project workspaces with auto-decomposed flows',
+      desc: 'Macro-objectives and epics (like ChatGPT Projects) with their own dedicated context guardrails, phased milestones, and execution pipelines.',
+      icon: Rocket,
+      badge: 'Project Workspaces',
+      preview: {
+        title: 'DBMS Semester Project Workspace',
+        items: [
+          { time: 'Phase 1 • Done', text: 'Functional Dependencies & Keys Verification', type: 'Complete' },
+          { time: 'Phase 2 • Active', text: '3NF & BCNF Decomposition Tables', type: 'Active' },
+          { time: 'Phase 3 • Next', text: 'SQL Verification & PDF Submission', type: 'Upcoming' },
+        ],
+      },
+    },
     {
       id: 'calendar',
       title: 'Calendar & Day Inspector',
@@ -101,21 +118,6 @@ export const FeatureHighlightsSection: React.FC = () => {
         items: [
           { time: 'High Priority', text: 'Finish DBMS Normalization (3/3 milestones)', type: 'Active' },
           { time: 'Medium', text: 'Review React 19 Compiler documentation', type: 'Queued' },
-        ],
-      },
-    },
-    {
-      id: 'adaptive',
-      title: 'Adaptive Re-Plan Engine',
-      tagline: 'Zero guilt when schedules change',
-      desc: 'When meetings overrun or tasks take longer than planned, FLOW automatically shifts downstream events into open time slots.',
-      icon: RefreshCw,
-      badge: 'Dynamic Replanner',
-      preview: {
-        title: 'Real-time Schedule Rebalance',
-        items: [
-          { time: 'Shifted', text: 'DBMS moved to 04:45 PM slot before 6 PM sync', type: 'Balanced' },
-          { time: 'Protected', text: '6:00 PM Team Sync preserved without conflicts', type: 'Locked' },
         ],
       },
     },

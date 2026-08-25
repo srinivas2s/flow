@@ -15,6 +15,7 @@ export interface Task {
   category?: string;
   completed_at?: string;
   created_at: string;
+  mission_id?: string;
 }
 
 export interface PlanItem {
@@ -57,4 +58,27 @@ export interface AIRecommendation {
   next_commitment: string;
   confidence_score: number;
   suggested_break_after: boolean;
+}
+
+export interface MissionPhase {
+  id: string;
+  title: string;
+  status: 'completed' | 'active' | 'upcoming';
+  tasksCount: number;
+  completedTasksCount: number;
+}
+
+export interface Mission {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  target_deadline: string;
+  status: 'active' | 'completed' | 'paused';
+  progress: number;
+  totalTasks: number;
+  completedTasks: number;
+  phases: MissionPhase[];
+  connectedTools: string[];
+  systemContext?: string;
 }

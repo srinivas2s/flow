@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Logo } from '@/components/ui/Logo';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
 export const FinalCTAScene: React.FC = () => {
@@ -36,14 +35,13 @@ export const FinalCTAScene: React.FC = () => {
           Your next move is already waiting.
         </p>
 
-        {/* Symmetric White/Ivory Neumorphic Button with Black Text */}
+        {/* Symmetric White/Ivory Neumorphic Button without arrow */}
         <div className="mt-10 w-full max-w-xs">
           <Link href="/app" className="block w-full">
             <button
-              className="w-full py-4 rounded-2xl neu-button text-flow-text-primary text-base font-black flex items-center justify-center gap-2.5 shadow-2xl hover:scale-[1.02] transition-all group"
+              className="w-full py-4 rounded-2xl neu-button text-flow-text-primary text-base font-black flex items-center justify-center shadow-2xl hover:scale-[1.02] transition-all"
             >
               <span>Enter FLOW</span>
-              <ArrowRight className="w-4 h-4 text-flow-accent transition-transform group-hover:translate-x-1" />
             </button>
           </Link>
         </div>

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { AlertCircle, Clock, Calendar, Mail, FileText, CheckCircle, Zap } from 'lucide-react';
+import { AlertCircle, Clock, Calendar, Mail, FileText, CheckCircle, Zap, Layers, Sparkles } from 'lucide-react';
 
 export const ChaosScene: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,39 +11,37 @@ export const ChaosScene: React.FC = () => {
     offset: ['start start', 'end end'],
   });
 
-  // Chaos fragments opacity and positions based on scroll
-  const fragmentsOpacity = useTransform(scrollYProgress, [0.05, 0.35, 0.6, 0.75], [0, 1, 1, 0.15]);
-  const fragmentsScale = useTransform(scrollYProgress, [0.05, 0.4, 0.7], [0.8, 1, 0.9]);
-  const blurValue = useTransform(scrollYProgress, [0.65, 0.85], ['blur(0px)', 'blur(10px)']);
+  const fragmentsOpacity = useTransform(scrollYProgress, [0.05, 0.35, 0.6, 0.75], [0, 1, 1, 0.1]);
+  const fragmentsScale = useTransform(scrollYProgress, [0.05, 0.4, 0.7], [0.75, 1, 0.9]);
+  const blurValue = useTransform(scrollYProgress, [0.65, 0.85], ['blur(0px)', 'blur(12px)']);
   
-  // Question opacity and scale in Scene 02
-  const questionOpacity = useTransform(scrollYProgress, [0.65, 0.8, 0.95], [0, 1, 0.2]);
-  const questionScale = useTransform(scrollYProgress, [0.65, 0.8, 0.95], [0.9, 1, 1.05]);
+  const questionOpacity = useTransform(scrollYProgress, [0.65, 0.8, 0.95], [0, 1, 0.15]);
+  const questionScale = useTransform(scrollYProgress, [0.65, 0.8, 0.95], [0.92, 1, 1.04]);
 
   const tasks = [
-    { text: 'Assignment due Friday', icon: Calendar, color: 'text-amber-500', top: '15%', left: '8%', delay: 0 },
-    { text: 'Meeting 6 PM with team', icon: Clock, color: 'text-blue-500', top: '22%', right: '10%', delay: 0.2 },
-    { text: 'Reply to client email', icon: Mail, color: 'text-rose-500', top: '48%', left: '5%', delay: 0.4 },
-    { text: 'Hackathon presentation slides', icon: FileText, color: 'text-purple-500', top: '38%', right: '8%', delay: 0.1 },
-    { text: 'Study React 19 hooks', icon: Zap, color: 'text-indigo-500', top: '65%', left: '12%', delay: 0.3 },
-    { text: 'Buy groceries & prep dinner', icon: CheckCircle, color: 'text-emerald-500', top: '72%', right: '15%', delay: 0.5 },
-    { text: 'Project deadline tomorrow 5PM', icon: AlertCircle, color: 'text-red-500', top: '82%', left: '18%', delay: 0.2 },
+    { text: 'Assignment due Friday', sub: 'DBMS Normalization', icon: Calendar, color: 'text-amber-500', top: '14%', left: '6%', delay: 0 },
+    { text: 'Meeting 6 PM', sub: 'Frontend Team Sync', icon: Clock, color: 'text-blue-500', top: '20%', right: '8%', delay: 0.2 },
+    { text: 'Reply to client email', sub: 'Contract review request', icon: Mail, color: 'text-rose-500', top: '46%', left: '4%', delay: 0.4 },
+    { text: 'Hackathon presentation', sub: 'Finish 3min pitch deck', icon: FileText, color: 'text-purple-500', top: '36%', right: '6%', delay: 0.1 },
+    { text: 'Study React 19 hooks', sub: 'Server Actions & Compiler', icon: Zap, color: 'text-indigo-500', top: '64%', left: '10%', delay: 0.3 },
+    { text: 'Buy groceries & prep dinner', sub: 'Weekly essentials', icon: CheckCircle, color: 'text-emerald-500', top: '70%', right: '12%', delay: 0.5 },
+    { text: 'Project deadline tomorrow', sub: 'High pressure blocker', icon: AlertCircle, color: 'text-red-500', top: '82%', left: '16%', delay: 0.2 },
   ];
 
   return (
-    <section ref={containerRef} className="relative h-[240vh] w-full">
-      {/* Sticky viewport frame */}
+    <section ref={containerRef} className="relative h-[250vh] w-full">
+      {/* Sticky Frame */}
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden px-4">
         
-        {/* Ambient background glow */}
+        {/* Deep ambient lighting */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-          <div className="w-[500px] h-[500px] rounded-full bg-flow-accent/5 blur-[120px] dark:bg-flow-accent/10" />
+          <div className="w-[600px] h-[600px] rounded-full bg-flow-accent/10 blur-[140px] ambient-pulse" />
         </div>
 
-        {/* Scene 01: Hero Intro + Mental Overload Fragments */}
+        {/* Floating Tactile Neumorphic Fragments */}
         <motion.div
           style={{ opacity: fragmentsOpacity, scale: fragmentsScale, filter: blurValue }}
-          className="absolute inset-0 pointer-events-none max-w-5xl mx-auto"
+          className="absolute inset-0 pointer-events-none max-w-6xl mx-auto"
         >
           {tasks.map((task, index) => {
             const Icon = task.icon;
@@ -51,11 +49,11 @@ export const ChaosScene: React.FC = () => {
               <motion.div
                 key={index}
                 animate={{
-                  y: [-6, 6, -6],
-                  rotate: index % 2 === 0 ? [-1, 2, -1] : [2, -2, 2],
+                  y: [-10, 10, -10],
+                  rotate: index % 2 === 0 ? [-2, 2.5, -2] : [2.5, -2, 2.5],
                 }}
                 transition={{
-                  duration: 4 + (index % 3),
+                  duration: 5 + (index % 3),
                   repeat: Infinity,
                   ease: 'easeInOut',
                   delay: task.delay,
@@ -66,46 +64,51 @@ export const ChaosScene: React.FC = () => {
                   left: task.left,
                   right: task.right,
                 }}
-                className="hidden sm:flex items-center gap-2.5 px-4 py-2.5 rounded-2xl neu-raised text-xs font-medium text-flow-text-primary shadow-lg border border-flow-border/40 whitespace-nowrap"
+                className="hidden sm:flex items-center gap-3.5 px-4 py-3 rounded-2xl neu-card text-xs font-semibold text-flow-text-primary shadow-2xl border border-flow-border/80 whitespace-nowrap pointer-events-auto hover:scale-105 transition-transform"
               >
-                <Icon className={`w-3.5 h-3.5 ${task.color}`} />
-                <span>{task.text}</span>
+                <div className="w-8 h-8 rounded-xl neu-pressed flex items-center justify-center shrink-0">
+                  <Icon className={`w-4 h-4 ${task.color}`} />
+                </div>
+                <div>
+                  <span className="block font-bold text-flow-text-primary">{task.text}</span>
+                  <span className="text-[10px] text-flow-muted font-normal">{task.sub}</span>
+                </div>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Scene 01 Text: Chaos & Overload */}
+        {/* Scene 01: The Overload Narrative */}
         <motion.div
           style={{
-            opacity: useTransform(scrollYProgress, [0, 0.2, 0.55], [1, 1, 0]),
-            y: useTransform(scrollYProgress, [0, 0.4], [0, -40]),
+            opacity: useTransform(scrollYProgress, [0, 0.22, 0.52], [1, 1, 0]),
+            y: useTransform(scrollYProgress, [0, 0.4], [0, -50]),
           }}
-          className="relative z-10 text-center max-w-2xl mx-auto px-4"
+          className="relative z-10 text-center max-w-3xl mx-auto px-4"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full neu-pill text-xs font-semibold text-flow-accent mb-6"
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full neu-pill text-xs font-bold text-flow-accent mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-flow-accent animate-ping" />
-            <span>The Reality of Modern Work</span>
+            <Layers className="w-3.5 h-3.5" />
+            <span>The Reality of Modern Workflow</span>
           </motion.div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-flow-text-primary tracking-tight leading-[1.15] mb-6">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-flow-text-primary tracking-tight leading-[1.1] mb-6">
             Your day shouldn&apos;t feel like a puzzle.
           </h1>
 
-          <p className="text-base sm:text-xl text-flow-text-secondary font-normal leading-relaxed max-w-xl mx-auto">
-            Your tasks, meetings, deadlines, ideas and commitments are everywhere.
+          <p className="text-base sm:text-xl text-flow-text-secondary font-medium leading-relaxed max-w-xl mx-auto">
+            Tasks, meetings, deadlines, ideas, and commitments are scattered across tabs and apps.
           </p>
 
-          <div className="mt-8 flex flex-col items-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-flow-muted">
+          <div className="mt-10 flex flex-col items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-flow-muted">
               Scroll to explore
             </span>
-            <div className="w-1 h-6 rounded-full bg-flow-accent/40 mt-2 animate-bounce" />
+            <div className="w-1.5 h-7 rounded-full bg-flow-accent/40 animate-bounce" />
           </div>
         </motion.div>
 
@@ -114,15 +117,18 @@ export const ChaosScene: React.FC = () => {
           style={{ opacity: questionOpacity, scale: questionScale }}
           className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 pointer-events-none"
         >
-          <div className="max-w-3xl mx-auto">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-flow-accent mb-4 block">
-              In the middle of the noise, one question matters:
-            </span>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-flow-text-primary tracking-tight leading-tight drop-shadow-sm">
+          <div className="max-w-3xl mx-auto p-8 rounded-3xl neu-card border border-flow-border/80 shadow-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full neu-pressed text-[11px] font-extrabold uppercase tracking-widest text-flow-accent mb-4">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>The Essential Question</span>
+            </div>
+            
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-flow-text-primary tracking-tight leading-tight">
               &ldquo;What should I do right now?&rdquo;
             </h2>
-            <p className="text-sm sm:text-lg text-flow-text-secondary mt-6 max-w-lg mx-auto">
-              Not a list of 50 things. Not another reminder. Just one clear, optimal action.
+
+            <p className="text-sm sm:text-lg text-flow-text-secondary mt-6 max-w-lg mx-auto font-medium">
+              Not a list of 50 disconnected items. Just one clear, optimal action that moves your day forward.
             </p>
           </div>
         </motion.div>

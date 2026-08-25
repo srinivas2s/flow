@@ -25,7 +25,7 @@
 }
 
 .dark {
-  /* Dark Theme (Pure Obsidian Black with Crisp Architectural White Grid Pattern) */
+  /* Dark Theme (Pure Obsidian Black with High-Definition Architectural White Grid Pattern) */
   --flow-bg: #07080A;
   --flow-surface: #101216;
   --flow-elevated: #161920;
@@ -35,7 +35,7 @@
   --flow-accent: #6366F1;
   --flow-accent-hover: #818CF8;
   --flow-accent-glow: rgba(99, 102, 241, 0.32);
-  --flow-border: rgba(255, 255, 255, 0.1);
+  --flow-border: rgba(255, 255, 255, 0.12);
 
   /* Modern Neumorphic Shadows for Pure Black Grid */
   --neu-shadow-raised: 8px 8px 20px rgba(0, 0, 0, 0.9), -5px -5px 18px rgba(255, 255, 255, 0.035), inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -72,16 +72,18 @@ body {
   background-attachment: fixed;
 }
 
-/* Dark Theme Crisp Architectural White Grid Pattern */
+/* Dark Theme High-Definition Architectural White Grid Pattern */
+.dark,
 .dark body,
+html.dark,
 html.dark body,
-html.dark {
+.dark main {
   background-color: #07080A !important;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.075) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.075) 1px, transparent 1px),
-    radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 70%) !important;
-  background-size: 32px 32px, 32px 32px, 100% 100% !important;
+    linear-gradient(to right, rgba(255, 255, 255, 0.11) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.14) 0%, transparent 70%) !important;
+  background-size: 28px 28px, 28px 28px, 100% 100% !important;
   background-position: 0 0, 0 0, center top !important;
   background-attachment: fixed !important;
 }

@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
           FLOW turns your scattered tasks, meetings, and deadlines into a single adaptive plan and answers: <strong>“What should I do right now?”</strong>
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Both Symmetric Neumorphic White Buttons with Black Text */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,24 +68,20 @@ export const HeroSection: React.FC = () => {
           className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-md justify-center mb-14"
         >
           <Link href="/app" className="w-full sm:w-auto">
-            <Button
-              variant="primary"
-              size="lg"
-              className="w-full sm:w-auto px-8 gap-2.5 text-base font-bold shadow-2xl group"
+            <button
+              className="w-full sm:w-auto px-8 py-3.5 rounded-2xl neu-button text-flow-text-primary text-base font-black flex items-center justify-center gap-2.5 shadow-xl hover:scale-[1.02] transition-all group"
             >
               <span>Enter FLOW</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+              <ArrowRight className="w-4 h-4 text-flow-accent transition-transform group-hover:translate-x-1" />
+            </button>
           </Link>
 
           <a href="#story" className="w-full sm:w-auto">
-            <Button
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto px-6 text-sm font-semibold"
+            <button
+              className="w-full sm:w-auto px-8 py-3.5 rounded-2xl neu-button text-flow-text-primary text-base font-bold flex items-center justify-center shadow-xl hover:scale-[1.02] transition-all"
             >
               <span>Explore The Narrative</span>
-            </Button>
+            </button>
           </a>
         </motion.div>
 
@@ -157,10 +153,10 @@ export const HeroSection: React.FC = () => {
                   </div>
 
                   <Link href="/app?action=focus" className="shrink-0">
-                    <Button variant="primary" size="sm" className="w-full sm:w-auto font-bold gap-1.5">
-                      <Play className="w-3.5 h-3.5 fill-current" />
+                    <button className="w-full sm:w-auto px-4 py-2 rounded-xl neu-button text-xs font-bold text-flow-text-primary flex items-center justify-center gap-1.5 shadow-md">
+                      <Play className="w-3.5 h-3.5 fill-current text-flow-accent" />
                       <span>Start Focus</span>
-                    </Button>
+                    </button>
                   </Link>
                 </div>
 

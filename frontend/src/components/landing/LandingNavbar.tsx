@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Logo } from '@/components/ui/Logo';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
-import { Button } from '@/components/ui/Button';
-import { ArrowRight, Sparkles, Compass, Zap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface LandingNavbarProps {
@@ -63,19 +62,17 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({ onEnterApp }) => {
           </a>
         </div>
 
-        {/* Right CTA */}
+        {/* Right CTA - Neumorphic White with Black Text */}
         <div className="flex items-center gap-3">
           <ThemeToggle size="sm" />
           <Link href="/app">
-            <Button
-              variant="primary"
-              size="sm"
-              className="gap-1.5 shadow-xl font-bold text-xs sm:text-sm group"
+            <button
               onClick={onEnterApp}
+              className="px-4 py-2 rounded-xl neu-button text-xs font-black text-flow-text-primary flex items-center gap-1.5 shadow-md hover:scale-[1.02] transition-all group"
             >
               <span>Launch App</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </Button>
+              <ArrowRight className="w-3.5 h-3.5 text-flow-accent transition-transform group-hover:translate-x-1" />
+            </button>
           </Link>
         </div>
       </div>

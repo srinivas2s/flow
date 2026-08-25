@@ -9,286 +9,350 @@
   ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝ 
 ```
 
-# **FLOW**
-### *The Intelligent, Flow-State First Productivity & Cognitive Management System*
+  <img src="./docs/assets/banner.jpg" alt="FLOW - Focus, Logic, Orchestration & Workflow" width="100%" style="border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.4);" />
 
-<p align="center">
-  <b>Eliminate Decision Paralysis. Enter Frictionless Deep Work. Master Your Cognitive Rhythm.</b>
-</p>
+  <br/><br/>
 
-[![Next.js 15](https://img.shields.io/badge/Next.js-15.1.7-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![React 19](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.4.7-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+  # FLOW
+  ### **Focus · Logic · Orchestration · Workflow**
 
-<br/>
+  <p align="center">
+    <strong>An intelligent personal AI execution companion that turns scattered daily commitments into an adaptive plan and answers the ultimate question: <em>"What should I do right now?"</em></strong>
+  </p>
 
-[✨ Features](#-key-features) • [🏛️ Architecture](#-system-architecture) • [🛠️ Tech Stack](#️-technology-stack) • [🚀 Quick Start](#-quick-start) • [📁 Directory Structure](#-directory-structure) • [🎨 Design System](#-design-system--aesthetics) • [🗺️ Roadmap](#-roadmap)
+  <p align="center">
+    <a href="#the-flow-paradigm"><img src="https://img.shields.io/badge/Status-Active_MVP-5B5CE2?style=for-the-badge" alt="Status" /></a>
+    <a href="#technology-stack"><img src="https://img.shields.io/badge/Frontend-Next.js_15_%7C_React_19-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" /></a>
+    <a href="#technology-stack"><img src="https://img.shields.io/badge/Styling-Tailwind_CSS_Neumorphism-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
+    <a href="#technology-stack"><img src="https://img.shields.io/badge/Backend-FastAPI_%7C_Python_3.12-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+    <a href="#technology-stack"><img src="https://img.shields.io/badge/Motion-Framer_Motion_12-FF0055?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
+    <a href="#license"><img src="https://img.shields.io/badge/License-MIT-7C7DFF?style=for-the-badge" alt="License" /></a>
+  </p>
 
----
+  <p align="center">
+    <a href="#the-flow-paradigm">Paradigm</a> •
+    <a href="#system-architecture">Architecture</a> •
+    <a href="#core-features">Core Features</a> •
+    <a href="#technology-stack">Tech Stack</a> •
+    <a href="#neumorphic-design-system">Design System</a> •
+    <a href="#quick-start-guide">Quick Start</a> •
+    <a href="#backend-api-reference">API Reference</a> •
+    <a href="#license">License</a>
+  </p>
 
 </div>
 
-<br/>
+---
 
-## 🌌 Overview
+## The FLOW Paradigm
 
-Modern productivity tools often contribute to the exact problem they claim to solve: **fragmentation, micro-management overhead, and decision fatigue**. 
+Most productivity tools act as passive databases: to-do lists that expand indefinitely, calendars requiring constant micro-adjustments, and generic chatbots disconnected from real-time context.
 
-**FLOW** is engineered as an adaptive, cognitive co-pilot. Instead of forcing you to navigate sprawling lists and complex matrices, FLOW synthesizes your goals, context, and mental energy into a single question answered with surgical clarity:
+**FLOW operates as an active execution engine** engineered to minimize cognitive overhead and provide actionable guidance at every moment.
 
-> **"What should I do right now?"**
+<div align="center">
 
-Built on top of a cutting-edge **Neumorphic & Fluid design system**, FLOW blends soft tactile surfaces with intelligent state tracking, ambient focus modes, and frictionless AI task synthesis.
+```
+  CHAOS & OVERLOAD                    THE CRITICAL QUESTION                    CLARITY & ACTION
+┌───────────────────┐               ┌────────────────────────┐               ┌───────────────────┐
+│ • 14 Unread Tasks │               │                        │               │ [START NOW]       │
+│ • Overdue Project │ ------------> │ "What should I do      │ ------------> │   Finish DBMS     │
+│ • 3pm Meeting     │               │        right now?"     │               │   (35m Focus Box) │
+│ • Cognitive Noise │               │                        │               │ • Auto Re-planned │
+└───────────────────┘               └────────────────────────┘               └───────────────────┘
+```
+
+</div>
+
+### The Continuous Execution Cycle
+
+```mermaid
+flowchart LR
+    A([1. Capture]) --> B([2. Understand])
+    B --> C([3. Prioritize])
+    C --> D([4. Adaptive Plan])
+    D --> E([5. Act / Focus])
+    E --> F([6. Learn & Context])
+    F -->|Schedule Disruption| D
+    F -->|New Input| A
+    
+    style A fill:#5B5CE2,stroke:#4C4DD1,stroke-width:2px,color:#fff
+    style B fill:#7C7DFF,stroke:#5B5CE2,stroke-width:2px,color:#fff
+    style C fill:#3B82F6,stroke:#2563EB,stroke-width:2px,color:#fff
+    style D fill:#6366F1,stroke:#4F46E5,stroke-width:2px,color:#fff
+    style E fill:#10B981,stroke:#059669,stroke-width:2px,color:#fff
+    style F fill:#F59E0B,stroke:#D97706,stroke-width:2px,color:#fff
+```
+
+| Phase | Responsibility | Operational Mechanism |
+| :--- | :--- | :--- |
+| **1. Capture** | Natural Input Ingestion | Unstructured thought dump via voice, quick prompt, or typed input |
+| **2. Understand** | Cognitive Parsing | Extracts task semantics, duration, dependencies, and urgency |
+| **3. Prioritize** | Dynamic Scoring | Weighs deadlines, energy levels, and available calendar buffers |
+| **4. Adaptive Plan** | Sequence Assembly | Generates a realistic, non-overlapping daily timeline |
+| **5. Act / Focus** | Ambient Deep Work | Single-task execution chamber with countdown and sub-milestones |
+| **6. Learn & Re-plan** | Dynamic Self-Healing | Automatically recalibrates downstream items upon disruption |
 
 ---
 
-## ✨ Key Features
+## System Architecture
+
+FLOW uses a decoupled architecture separating the client presentation layer from the high-throughput AI orchestration service.
+
+```mermaid
+graph TB
+    subgraph Client["Frontend Client (Next.js 15 + React 19)"]
+        Landing["Cinematic Storytelling Landing Page"]
+        AppShell["Mobile-First Application Shell"]
+        
+        subgraph AppScreens["Application Views"]
+            HomeScreen["Home (Next Move & Summary)"]
+            TaskScreen["Tasks (Prioritized Backlog)"]
+            PlanScreen["Plan (Adaptive Timeline)"]
+            BrainScreen["Brain (Context & Memory)"]
+        end
+        
+        subgraph ModalsOverlays["Interactive Overlays"]
+            FocusOverlay["Immersive Focus Mode"]
+            CaptureModal["AI Natural Language Capture"]
+            AssistantDrawer["Contextual AI Assistant"]
+        end
+        
+        DesignSys["Modern Neumorphic Design System (Light/Dark Engine)"]
+    end
+
+    subgraph BackendGateway["FastAPI Gateway & Service Layer"]
+        FastAPIApp["FastAPI REST Application (Python 3.12)"]
+        CORS["CORS & Request Validation Middleware"]
+        PydanticSchemas["Pydantic v2 Models & Schema Enforcers"]
+    end
+
+    subgraph CoreEngines["Core Intelligence Engines"]
+        DecompEngine["NLP Task Decomposition Engine"]
+        AdaptiveEngine["Dynamic Re-scheduling & Priority Engine"]
+        FocusEngine["Session Metrics & Focus State Tracker"]
+        MemoryEngine["Habit & Context Memory Store"]
+    end
+
+    subgraph DataStorage["Data & Persistence"]
+        LocalCache["Client LocalStorage / Offline Cache"]
+        BackendStore["Stateful In-Memory / Vector Persistence"]
+    end
+
+    %% Connections
+    Landing --> AppShell
+    AppShell --> AppScreens
+    AppScreens --> ModalsOverlays
+    AppScreens --> DesignSys
+    
+    AppShell <-->|REST / JSON Async| FastAPIApp
+    FastAPIApp --> CORS
+    CORS --> PydanticSchemas
+    PydanticSchemas --> CoreEngines
+    
+    DecompEngine <--> BackendStore
+    AdaptiveEngine <--> BackendStore
+    MemoryEngine <--> BackendStore
+    AppShell <--> LocalCache
+
+    classDef clientStyle fill:#0F172A,stroke:#5B5CE2,stroke-width:2px,color:#F8FAFC;
+    classDef serverStyle fill:#1E1B4B,stroke:#7C7DFF,stroke-width:2px,color:#F8FAFC;
+    classDef engineStyle fill:#064E3B,stroke:#34D399,stroke-width:2px,color:#F8FAFC;
+    classDef storeStyle fill:#312E81,stroke:#818CF8,stroke-width:2px,color:#F8FAFC;
+
+    class Client,Landing,AppShell,HomeScreen,TaskScreen,PlanScreen,BrainScreen,FocusOverlay,CaptureModal,AssistantDrawer,DesignSys clientStyle;
+    class BackendGateway,FastAPIApp,CORS,PydanticSchemas serverStyle;
+    class CoreEngines,DecompEngine,AdaptiveEngine,FocusEngine,MemoryEngine engineStyle;
+    class DataStorage,LocalCache,BackendStore storeStyle;
+```
+
+---
+
+## Core Features
 
 <table>
   <tr>
-    <td width="50%" valign="top">
-      <h3>🎯 Single-Action Focus Engine</h3>
-      <ul>
-        <li><b>"What Now?" Solver:</b> Instant dynamic task selection based on deadline, importance, and current energy levels.</li>
-        <li><b>Cognitive Load Balancing:</b> Auto-slices overwhelming projects into atomic, low-friction micro-actions.</li>
-      </ul>
+    <td width="50%">
+      <h3 align="center">"What Should I Do Now?"</h3>
+      <p>Eliminates decision fatigue with a prominent hero recommendation card explaining <strong>why</strong> a task was selected, estimated completion duration, and a 1-tap launch into deep focus.</p>
     </td>
-    <td width="50%" valign="top">
-      <h3>🧠 Adaptive AI Brain & Memory</h3>
-      <ul>
-        <li><b>Natural Thought Capture:</b> Dump raw brain dumps, audio memos, or chaotic notes; the AI parses intent, urgency, and category.</li>
-        <li><b>Contextual Memory:</b> Learns your peak productive hours and work rhythms over time.</li>
-      </ul>
+    <td width="50%">
+      <h3 align="center">Natural Language AI Capture</h3>
+      <p>Accepts natural inputs like <em>"Finish DBMS introduction due tomorrow with 35 min estimated"</em>, parsing them into structured tasks with estimated time and priority tags.</p>
     </td>
   </tr>
   <tr>
-    <td width="50%" valign="top">
-      <h3>🌊 Deep Flow State Chamber</h3>
-      <ul>
-        <li><b>Distraction-Free Focus Mode:</b> Fullscreen immersive workspace with fluid Pomodoro / Flow timers.</li>
-        <li><b>Ambient Soundscapes:</b> Generative focus audio and rewarding celebratory micro-interactions with canvas confetti.</li>
-      </ul>
+    <td width="50%">
+      <h3 align="center">Dynamic Adaptive Replanning</h3>
+      <p>When unexpected disruptions occur, FLOW recalculates the remaining day's schedule automatically without guilt trips or broken streak penalties.</p>
     </td>
-    <td width="50%" valign="top">
-      <h3>🎨 Neumorphic Tactile Interface</h3>
-      <ul>
-        <li><b>Bi-Directional Theming:</b> Seamless dark and light themes with calibrated ambient shadows and luminescence.</li>
-        <li><b>Kinetic Micro-Interactions:</b> 60fps spring animations powered by Framer Motion.</li>
-      </ul>
+    <td width="50%">
+      <h3 align="center">Distraction-Free Focus Mode</h3>
+      <p>A full-screen ambient workspace with custom countdown timer, active sub-step breakdown, tactile controls, and celebration animations upon task completion.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3 align="center">Cognitive Memory & Brain</h3>
+      <p>Stores personal productivity context (e.g., peak deep-work hours, recurring blockers, preferred work sprints) to continuously refine future scheduling.</p>
+    </td>
+    <td width="50%">
+      <h3 align="center">Cinematic Storytelling Landing Page</h3>
+      <p>An immersive, motion-rich narrative that visualizes the shift from fragmented chaos to unified execution clarity.</p>
     </td>
   </tr>
 </table>
 
 ---
 
-## 🏛️ System Architecture
+## Technology Stack
 
-FLOW is architected with a high-performance, decoupled client-server model separating user interaction, ambient state synchronization, and background AI inference.
+| Layer | Technology | Version | Purpose & Highlights |
+| :--- | :--- | :--- | :--- |
+| **Frontend Framework** | [Next.js](https://nextjs.org/) | `15.1.7` | App Router, Server/Client components, optimized builds |
+| **UI Library** | [React](https://react.dev/) | `19.0.0` | Modern concurrent rendering, clean hooks architecture |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) | `5.7.3` | Full-stack end-to-end type safety and schema alignment |
+| **Styling & Tokens** | [Tailwind CSS](https://tailwindcss.com/) | `3.4.17` | Utility-first styling with custom Neumorphic extension |
+| **Animation Engine** | [Framer Motion](https://www.framer.com/motion/) | `12.4.7` | Physics-based spring animations, layout morphing & gestures |
+| **Iconography** | [Lucide React](https://lucide.dev/) | `0.475.0` | Consistent, lightweight vector icon set |
+| **Visual Effects** | [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti) | `1.9.4` | Micro-reward particle bursts upon task completion |
+| **Backend API** | [FastAPI](https://fastapi.tiangolo.com/) | `0.115+` | High-performance asynchronous REST API framework |
+| **Data Validation** | [Pydantic](https://docs.pydantic.dev/) | `v2.x` | Strict type validation and JSON serialization |
+| **ASGI Server** | [Uvicorn](https://www.uvicorn.org/) | `0.32+` | Lightning-fast ASGI web server for Python |
+| **Runtime** | Node.js & Python | `Node 24+` / `Py 3.12` | Modern cross-platform runtime environments |
 
-```mermaid
-flowchart TB
-    subgraph Client["🖥️ Frontend Client Tier (Next.js 15 + React 19)"]
-        UI["✨ Neumorphic UI & Fluid Surfaces<br/>(Tailwind CSS + Custom Tokens)"]
-        Motion["🎬 Motion & Interaction Engine<br/>(Framer Motion 12 + Lucide)"]
-        State["🔄 Reactive State & Focus Timers<br/>(React Context / Hooks)"]
-        Landing["🌐 Cinematic Landing Experience<br/>(Scroll-linked scenes & reveal)"]
-    end
+---
 
-    subgraph Gateway["⚡ API Gateway & Communication"]
-        REST["HTTP/2 REST Endpoints<br/>(FastAPI / Pydantic v2)"]
-        WS["Real-time WebSocket Channel<br/>(Live Focus & Session Sync)"]
-    end
+## Neumorphic Design System
 
-    subgraph Backend["⚙️ Core Backend Services"]
-        TaskSvc["📋 Task & Plan Orchestrator"]
-        FocusSvc["⏱️ Focus Session & Flow Metrics"]
-        MemorySvc["🧠 Semantic Memory & Knowledge Graph"]
-    end
+FLOW employs a soft, tactile **Modern Neumorphic Design System** engineered specifically to look warm, organic, and calm rather than sterile or abrasive.
 
-    subgraph AI["🤖 AI & Cognitive Intelligence Layer"]
-        Classifier["⚡ Intent & Priority Resolver"]
-        Optimizer["📈 Cognitive Load & Schedule Optimizer"]
-        LLM["🔮 LLM Inference & Thought Extraction"]
-    end
-
-    subgraph Data["💾 Persistence & State Layer"]
-        DB[("🗄️ Primary Relational Store<br/>PostgreSQL / SQLite")]
-        Cache[("⚡ Redis Cache & State Bus")]
-        Vector[("🔍 Vector Embeddings / Memory")]
-    end
-
-    Client -->|REST & WebSockets| Gateway
-    Gateway --> Backend
-    Backend <--> AI
-    Backend <--> Data
-    AI <--> Vector
+```
+       LIGHT MODE SURFACE                      DARK MODE SURFACE
+┌───────────────────────────────┐       ┌───────────────────────────────┐
+│  Background: #F2F3F5          │       │  Background: #0D0E10          │
+│  Surface:    #F7F8FA          │       │  Surface:    #15171A          │
+│  Elevated:   #FFFFFF          │       │  Elevated:   #1B1E22          │
+│  Accent:     #5B5CE2          │       │  Accent:     #7C7DFF          │
+│  Shadow:     Soft Raised      │       │  Shadow:     Deep Inset/Night │
+└───────────────────────────────┘       └───────────────────────────────┘
 ```
 
 ---
 
-## 🛠️ Technology Stack
-
-| Domain | Technology | Details |
-| :--- | :--- | :--- |
-| **Frontend Framework** | `Next.js 15 (App Router)` | High-performance React framework with Turbopack & SSR |
-| **UI Library** | `React 19` | Modern concurrent rendering and hooks |
-| **Language** | `TypeScript 5.7` | Strict type safety across components and models |
-| **Styling** | `Tailwind CSS 3.4` | Custom neumorphic shadows (`neu-raised`, `neu-pressed`, `neu-glow`) |
-| **Animations** | `Framer Motion 12` | Physics-based spring animations, layout transitions & gestures |
-| **Iconography** | `Lucide React` | Clean, customizable modern icon suite |
-| **Delight / FX** | `Canvas Confetti` | Particle fireworks celebrating task completion |
-| **Backend Engine** | `FastAPI (Python 3.11+)` | Asynchronous, OpenAPI-native web framework |
-| **Validation** | `Pydantic v2` | High-performance data schemas and serialization |
-| **Persistence** | `PostgreSQL / SQLite` | Robust relational modeling with SQLAlchemy |
-| **Caching / Sessions**| `Redis` | In-memory session tracking and instant synchronization |
-
----
-
-## 🎨 Design System & Aesthetics
-
-FLOW utilizes a custom-designed **Neumorphic Minimalist Design System** crafted with soft dimensional lighting, subtle luminescence, and accessible contrast ratios.
-
-```
-       LIGHT MODE                             DARK MODE
- ┌──────────────────────┐              ┌──────────────────────┐
- │  Surface: #F3F4F6    │              │  Surface: #12141A    │
- │  Raised:  2-Point    │  ───────►    │  Raised:  Deep Dark  │
- │  Border:  Translucent│              │  Glow:    Indigo/Cyan│
- │  Accent:  #6366F1    │              │  Accent:  #818CF8    │
- └──────────────────────┘              └──────────────────────┘
-```
-
-### Custom Tailwind Utility Shadows
-```css
-/* Neumorphic Lighting Model */
---neu-shadow-raised: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
---neu-shadow-pressed: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
---neu-shadow-glow: 0 0 20px rgba(99, 102, 241, 0.35);
-```
-
----
-
-## 📁 Directory Structure
+## Repository Structure
 
 ```text
 flow/
-├── 📄 IMPLEMENTATION_PLAN.md    # Step-by-step master engineering plan
-├── 📄 README.md                 # Project documentation & tech overview
-├── 📁 frontend/                 # Next.js 15 Client Application
-│   ├── 📁 src/
-│   │   ├── 📁 app/              # App router (Landing, Dashboard, Focus Mode)
-│   │   ├── 📁 components/       # Neumorphic UI primitives & motion components
-│   │   │   ├── 📁 ui/           # Buttons, Cards, Inputs, Modals, Badges
-│   │   │   ├── 📁 landing/      # Hero, Chaos Scene, Reveal, Interactive Showcase
-│   │   │   ├── 📁 tasks/        # Task boards, Quick add, Matrix, Schedule
-│   │   │   ├── 📁 focus/        # Fullscreen chamber, Ambient sound, Timers
-│   │   │   └── 📁 brain/        # AI thoughts, Memory graph, Note synthesis
-│   │   ├── 📁 hooks/            # Custom React hooks (useTheme, useFocusSession)
-│   │   ├── 📁 lib/              # Utility helpers, CN merging, Constants
-│   │   └── 📁 styles/           # Global design tokens and neumorphic variables
-│   ├── 📄 tailwind.config.ts    # Custom design system configuration
-│   ├── 📄 package.json          # Dependencies & scripts
-│   ├── 📄 tsconfig.json         # TypeScript compiler config
-│   └── 📄 next.config.mjs       # Next.js optimization & configuration
-└── 📁 backend/                  # FastAPI Application (Planned / Extensible)
-    ├── 📁 app/
-    │   ├── 📁 api/              # REST & WebSocket route handlers
-    │   ├── 📁 core/             # Settings, Security, Database connection
-    │   ├── 📁 models/           # SQLAlchemy & Pydantic domain models
-    │   ├── 📁 services/         # AI Task reasoning, Focus session engine
-    │   └── 📄 main.py           # Application entrypoint
-    └── 📄 requirements.txt      # Python dependencies
+├── README.md                    # Project manifesto, architecture & setup guide
+├── .gitignore                   # Production ignore rules
+│
+├── docs/                        # Project documentation & visual assets
+│   └── assets/                  # Brand artwork, logo, diagrams & mockups
+│       ├── banner.jpg           # FLOW official project banner
+│       └── logo.jpg             # FLOW glassmorphic app icon
+│
+├── frontend/                    # Next.js 15 Web Application
+│   ├── src/
+│   │   ├── app/                 # Next.js App Router
+│   │   │   ├── layout.tsx       # Root HTML layout, theme provider & font injection
+│   │   │   ├── page.tsx         # Cinematic interactive landing page (Scenes 01-08)
+│   │   │   ├── globals.css      # Neumorphic tokens, custom shadows & animations
+│   │   │   └── app/             # Core Product Experience
+│   │   │       ├── page.tsx     # Main application shell (Home, Tasks, Plan, Brain)
+│   │   │       └── ...
+│   │   ├── components/          # Component Architecture
+│   │   │   ├── ui/              # Neumorphic buttons, cards, pills, inputs & badges
+│   │   │   ├── landing/         # Storytelling sections (Chaos, AI Reveal, Focus Demo)
+│   │   │   ├── app/             # HomeView, TaskList, PlanTimeline, FocusModal, BrainView
+│   │   │   └── theme/           # ThemeContext & ThemeSwitcher
+│   │   ├── lib/                 # API client, fallback mock dataset & utils
+│   │   └── types/               # Task, Schedule, FocusSession & Memory interfaces
+│   ├── tailwind.config.ts       # Custom Tailwind palette & Neumorphic box-shadows
+│   ├── tsconfig.json            # Strict TypeScript compiler options
+│   └── package.json             # Frontend dependencies & npm scripts
+│
+└── backend/                     # FastAPI Python Service
+    ├── app/
+    │   ├── main.py              # FastAPI initialization, CORS & endpoint routers
+    │   ├── models/              # Pydantic schemas (Task, Plan, Recommendation, Memory)
+    │   ├── services/            # Adaptive scheduling & natural language decomposition logic
+    │   └── routers/             # Tasks, Plan, Focus, AI and Memory API endpoints
+    └── requirements.txt         # Python dependencies (fastapi, uvicorn, pydantic)
 ```
 
 ---
 
-## 🚀 Quick Start
+## Backend API Reference
+
+The backend provides a clean RESTful interface for task orchestration, intelligent replanning, and focus tracking.
+
+| Method | Endpoint | Description | Request Body / Params |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/health` | Healthcheck & system status | *None* |
+| `GET` | `/api/tasks` | Fetch all user tasks & status | `?status=all\|todo\|completed` |
+| `POST` | `/api/tasks` | Create a new task manually | `TaskCreate` schema |
+| `PATCH` | `/api/tasks/{id}` | Update task status or details | `TaskUpdate` schema |
+| `DELETE` | `/api/tasks/{id}` | Remove a task | *None* |
+| `GET` | `/api/plan` | Fetch structured adaptive daily timeline | *None* |
+| `POST` | `/api/plan/recalculate` | Trigger recalculation after schedule change | `{"disrupted_task_id": "t1"}` |
+| `POST` | `/api/ai/recommend` | Compute optimal "What should I do now?" | *None* |
+| `POST` | `/api/focus/start` | Initialize a distraction-free focus session | `{"task_id": "t1", "duration_minutes": 25}` |
+| `POST` | `/api/focus/complete` | Record completed focus session & stats | `{"session_id": "s1"}` |
+| `GET` | `/api/memories` | Retrieve stored productivity context & habits | *None* |
+
+---
+
+## Quick Start Guide
 
 ### Prerequisites
-- **Node.js**: `v18.18.0` or higher
-- **npm** / **pnpm** / **yarn**
-- **Python**: `3.11+` *(for backend services)*
+* **Node.js**: v18.18+ or v20+ / v24+
+* **npm**: v9+ (or `pnpm` / `bun`)
+* **Python**: v3.10+ or v3.12+
 
-### 1. Clone the Repository
+### 1. Clone & Setup Workspace
+
 ```bash
-git clone https://github.com/your-username/flow.git
+git clone https://github.com/srinivas2s/flow.git
 cd flow
 ```
 
 ### 2. Frontend Setup
+
 ```bash
-# Navigate to frontend directory
 cd frontend
-
-# Install dependencies
 npm install
-
-# Launch development server
 npm run dev
 ```
+> The frontend application will be live at `http://localhost:3000`.
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to experience FLOW.
+### 3. Backend Setup
 
-### 3. Build for Production
 ```bash
-npm run build
-npm run start
+cd backend
+python -m venv venv
+
+# On Windows:
+.\venv\Scripts\activate
+
+# On macOS/Linux:
+source venv/bin/activate
+
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
 ```
+> The API server will be live at `http://localhost:8000` (Interactive Swagger Docs at `http://localhost:8000/docs`).
 
 ---
 
-## ⚙️ Environment Configuration
+## License
 
-Create a `.env.local` file inside the `frontend/` directory:
-
-```env
-# Application Configuration
-NEXT_PUBLIC_APP_NAME="FLOW"
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
-
-# Backend API Endpoint
-NEXT_PUBLIC_API_BASE_URL="http://localhost:8000/api/v1"
-
-# AI Inference Keys (Optional / for direct client experiments)
-NEXT_PUBLIC_AI_PROVIDER="openai"
-```
-
----
-
-## 🗺️ Roadmap & Milestones
-
-- [x] **Phase 1: Project Foundation** — Next.js 15, React 19, TypeScript 5, Tailwind CSS
-- [x] **Phase 2: Neumorphic Design System** — Custom soft surfaces, tokens, dark/light luminescence
-- [ ] **Phase 3: Cinematic Landing Page** — Interactive scroll storytelling, Chaos-to-Flow visualization
-- [ ] **Phase 4: Core MVP Application** — Single-Action solver, Task board, Focus chamber, Brain view
-- [ ] **Phase 5: FastAPI Backend** — Task engine, Session analytics, Realtime WebSocket sync
-- [ ] **Phase 6: AI Cognitive Orchestration** — Semantic priority scoring, natural language parser
-- [ ] **Phase 7: Mobile & Desktop Polish** — PWA support, tactile haptics, keyboard-first navigation
-
----
-
-## 🤝 Contributing
-
-Contributions are what make the open-source community such an inspiring place to learn, create, and build. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-Distributed under the **MIT License**. See `LICENSE` for more information.
-
-<br/>
+Distributed under the **MIT License**.
 
 <div align="center">
-  <sub>Engineered with 💜 for deep focus and effortless cognitive clarity.</sub>
+  <br/>
+  <img src="./docs/assets/logo.jpg" alt="FLOW Icon" width="64" style="border-radius: 12px;" />
+  <br/>
+  <strong>FLOW — Focus, Logic, Orchestration & Workflow</strong><br/>
+  <sub>Designed with precision for human cognitive clarity.</sub>
 </div>

@@ -1,96 +1,181 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Logo } from '@/components/ui/Logo';
-import { Layers, ArrowRight, Sparkles, Brain, CheckSquare, Target, Zap } from 'lucide-react';
+import { Layers, Sparkles, Brain, Target, ArrowRight, Zap, CheckCircle2, Clock, Calendar } from 'lucide-react';
 
 export const FlowRevealScene: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const nodeScale = useTransform(scrollYProgress, [0.08, 0.42], [0.85, 1.08]);
-  const nodeOpacity = useTransform(scrollYProgress, [0.05, 0.28], [0, 1]);
-  const stepsOpacity = useTransform(scrollYProgress, [0.3, 0.6], [0, 1]);
-  const stepsTranslate = useTransform(scrollYProgress, [0.3, 0.6], [35, 0]);
-
-  const loopSteps = [
-    { title: 'CAPTURE', desc: 'Natural thoughts & raw inputs', icon: Layers, color: 'text-rose-500', step: '01' },
-    { title: 'UNDERSTAND', desc: 'AI extracts semantics & duration', icon: Brain, color: 'text-amber-500', step: '02' },
-    { title: 'FLOW', desc: 'Adaptive plan orchestration', icon: Sparkles, color: 'text-flow-accent', step: '03' },
-    { title: 'ACTION', desc: 'Singular distraction-free focus', icon: Target, color: 'text-emerald-500', step: '04' },
+  const storySteps = [
+    {
+      step: '01',
+      title: 'CAPTURE',
+      badge: 'Step 01 • Instant Ingestion',
+      headline: 'Dump everything in your mind.',
+      desc: 'No manual forms or tagging. Speak or type raw unstructured thoughts, emails, and deadlines in plain language.',
+      icon: Layers,
+      color: 'text-rose-500',
+      bgColor: 'bg-rose-500/10',
+      borderColor: 'border-rose-500/30',
+      mockup: (
+        <div className="p-4 rounded-2xl neu-pressed text-left space-y-2 border border-flow-border/60">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-flow-muted">Raw Stream Input</span>
+          <p className="text-xs sm:text-sm font-medium text-flow-text-primary italic leading-relaxed">
+            &ldquo;Need to finish the DBMS normalization assignment before Friday 5pm, plus sync with frontend team at 6pm.&rdquo;
+          </p>
+        </div>
+      ),
+    },
+    {
+      step: '02',
+      title: 'UNDERSTAND',
+      badge: 'Step 02 • Cognitive Semantic Parser',
+      headline: 'FLOW breaks it down into reality.',
+      desc: 'The AI extracts exact time requirements, urgency weights, cognitive energy profiles, and hard calendar constraints.',
+      icon: Brain,
+      color: 'text-amber-500',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-500/30',
+      mockup: (
+        <div className="grid grid-cols-2 gap-2 text-left">
+          <div className="p-3 rounded-xl neu-pressed">
+            <span className="text-[10px] font-bold text-flow-muted block uppercase">Extracted Task</span>
+            <span className="text-xs font-bold text-flow-text-primary block mt-0.5">DBMS Normalization</span>
+          </div>
+          <div className="p-3 rounded-xl neu-pressed">
+            <span className="text-[10px] font-bold text-flow-muted block uppercase">Estimated Sprint</span>
+            <span className="text-xs font-bold text-flow-text-primary block mt-0.5">35 Mins Focus</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      step: '03',
+      title: 'FLOW',
+      badge: 'Step 03 • Adaptive Orchestration',
+      headline: 'Your day sequenced automatically.',
+      desc: 'FLOW finds the optimal calendar window that matches your peak cognitive energy before your next meeting.',
+      icon: Sparkles,
+      color: 'text-flow-accent',
+      bgColor: 'bg-flow-accent/10',
+      borderColor: 'border-flow-accent/30',
+      mockup: (
+        <div className="p-3.5 rounded-xl neu-pressed text-left space-y-1.5 border border-flow-accent/30">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-bold text-flow-accent uppercase tracking-wider">Scheduled Window</span>
+            <span className="text-[10px] text-emerald-500 font-bold">Optimal Fit</span>
+          </div>
+          <div className="text-xs font-bold text-flow-text-primary">
+            04:45 PM – 05:20 PM (35m Focus Box)
+          </div>
+          <span className="text-[11px] text-flow-text-secondary block">
+            Positioned before 6:00 PM Team Sync with 40m recovery buffer.
+          </span>
+        </div>
+      ),
+    },
+    {
+      step: '04',
+      title: 'ACTION',
+      badge: 'Step 04 • Distraction-Free Execution',
+      headline: 'One clear step. Total focus.',
+      desc: 'No task lists to browse. FLOW serves your immediate next move with a dedicated focus chamber and zero context switching.',
+      icon: Target,
+      color: 'text-emerald-500',
+      bgColor: 'bg-emerald-500/10',
+      borderColor: 'border-emerald-500/30',
+      mockup: (
+        <div className="p-4 rounded-2xl neu-raised text-left flex items-center justify-between border border-emerald-500/40 bg-emerald-500/5">
+          <div>
+            <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest block">Focus Chamber Ready</span>
+            <span className="text-xs sm:text-sm font-black text-flow-text-primary block mt-0.5">Finish DBMS Normalization</span>
+          </div>
+          <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center neu-raised shadow-md shrink-0">
+            <CheckCircle2 className="w-4 h-4" />
+          </div>
+        </div>
+      ),
+    },
   ];
 
   return (
-    <section id="story" ref={containerRef} className="relative min-h-[190vh] w-full py-28 px-4">
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center max-w-5xl mx-auto text-center">
-        
-        {/* Central FLOW Logo / Node */}
-        <motion.div
-          style={{ scale: nodeScale, opacity: nodeOpacity }}
-          className="flex flex-col items-center mb-10"
-        >
-          <Logo size="xl" withText={false} animate={true} />
-          
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-flow-text-primary tracking-tight mt-6">
-            Meet <span className="text-flow-accent">FLOW.</span>
-          </h2>
+    <section id="story" className="relative w-full py-28 px-4 max-w-4xl mx-auto">
+      {/* Narrative Section Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-20"
+      >
+        <div className="flex justify-center mb-4">
+          <Logo size="lg" withText={false} animate={true} />
+        </div>
 
-          <p className="text-base sm:text-xl text-flow-text-secondary mt-4 max-w-xl mx-auto leading-relaxed font-medium">
-            An AI productivity companion that turns scattered commitments into a plan you can actually follow.
-          </p>
-        </motion.div>
+        <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-flow-text-primary tracking-tight">
+          The <span className="text-flow-accent">FLOW</span> Story.
+        </h2>
 
-        {/* Visual Metaphor Conversion Pipeline */}
-        <motion.div
-          style={{ opacity: stepsOpacity, y: stepsTranslate }}
-          className="w-full max-w-4xl mx-auto"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-            {loopSteps.map((step, idx) => {
-              const Icon = step.icon;
-              return (
-                <div
-                  key={idx}
-                  className="neu-card p-5 sm:p-6 flex flex-col items-center text-center relative group border border-flow-border/80 shadow-xl hover:-translate-y-1 transition-transform"
-                >
-                  <div className="w-12 h-12 rounded-2xl neu-raised flex items-center justify-center mb-3">
-                    <Icon className={`w-6 h-6 ${step.color}`} />
-                  </div>
+        <p className="text-base sm:text-xl text-flow-text-secondary mt-4 max-w-xl mx-auto leading-relaxed font-medium">
+          How raw mental chaos is converted into effortless execution across 4 continuous stages.
+        </p>
+      </motion.div>
 
-                  <span className="text-[10px] font-black text-flow-muted tracking-widest uppercase mb-1">
-                    Step {step.step}
-                  </span>
+      {/* Vertical Story Flow Sequence */}
+      <div className="relative space-y-16">
+        {/* Continuous background glowing connection beam */}
+        <div className="hidden sm:block absolute left-8 top-10 bottom-10 w-0.5 bg-gradient-to-b from-rose-500 via-flow-accent to-emerald-500 opacity-40" />
 
-                  <span className="text-xs font-black uppercase tracking-wider text-flow-text-primary">
-                    {step.title}
-                  </span>
+        {storySteps.map((item, idx) => {
+          const Icon = item.icon;
+          return (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex flex-col sm:flex-row items-start gap-6 sm:gap-10"
+            >
+              {/* Step Number Icon Node */}
+              <div className="relative z-10 w-16 h-16 rounded-3xl neu-card flex flex-col items-center justify-center shrink-0 border border-flow-border shadow-xl">
+                <Icon className={`w-6 h-6 ${item.color}`} />
+                <span className="text-[10px] font-black text-flow-muted tracking-tighter mt-0.5">
+                  {item.step}
+                </span>
+              </div>
 
-                  <span className="text-[11px] text-flow-secondary mt-1 font-medium leading-normal">
-                    {step.desc}
-                  </span>
-
-                  {idx < loopSteps.length - 1 && (
-                    <div className="hidden md:block absolute -right-3.5 top-1/2 -translate-y-1/2 z-10">
-                      <div className="w-7 h-7 rounded-full neu-raised flex items-center justify-center text-flow-accent shadow-md">
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
-                  )}
+              {/* Story Content Card */}
+              <div className="flex-1 w-full neu-card p-6 sm:p-8 border border-flow-border/80 shadow-2xl hover:scale-[1.01] transition-transform">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full neu-pressed text-[11px] font-bold uppercase tracking-wider text-flow-accent mb-3">
+                  <Sparkles className="w-3 h-3" />
+                  <span>{item.badge}</span>
                 </div>
-              );
-            })}
-          </div>
 
-          <div className="mt-8 inline-flex items-center gap-2 px-3 py-1 rounded-full neu-pressed text-[11px] font-bold uppercase tracking-widest text-flow-muted">
-            <Zap className="w-3 h-3 text-flow-accent" />
-            <span>Continuous Autonomous Execution Loop</span>
-          </div>
-        </motion.div>
+                <h3 className="text-2xl sm:text-3xl font-black text-flow-text-primary tracking-tight mb-2">
+                  {item.headline}
+                </h3>
 
+                <p className="text-xs sm:text-sm text-flow-text-secondary font-medium leading-relaxed mb-6">
+                  {item.desc}
+                </p>
+
+                {/* Interactive Simulated Live Mockup */}
+                <div>
+                  {item.mockup}
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Story Conclusion Badge */}
+      <div className="mt-20 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full neu-pressed text-xs font-bold uppercase tracking-widest text-flow-accent shadow-inner">
+          <Zap className="w-4 h-4" />
+          <span>Continuous Adaptive Cycle • Runs Autonomously</span>
+        </div>
       </div>
     </section>
   );

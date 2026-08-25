@@ -58,7 +58,7 @@ export const HeroSection: React.FC = () => {
           FLOW turns your scattered tasks, meetings, and deadlines into a single adaptive plan and answers: <strong>“What should I do right now?”</strong>
         </motion.p>
 
-        {/* Both Symmetric Neumorphic White Buttons without Arrow Mark */}
+        {/* Smooth Corner Capsule Rectangle Neumorphic Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export const HeroSection: React.FC = () => {
         >
           <Link href="/app" className="w-full sm:w-auto">
             <button
-              className="w-full sm:w-auto px-8 py-3.5 rounded-2xl neu-button text-flow-text-primary text-base font-black flex items-center justify-center shadow-xl hover:scale-[1.02] transition-all"
+              className="w-full sm:w-auto px-9 py-3.5 rounded-full neu-button text-flow-text-primary text-base font-black flex items-center justify-center shadow-xl hover:scale-[1.02] transition-all min-h-[48px]"
             >
               <span>Enter FLOW</span>
             </button>
@@ -75,7 +75,7 @@ export const HeroSection: React.FC = () => {
 
           <a href="#story" className="w-full sm:w-auto">
             <button
-              className="w-full sm:w-auto px-8 py-3.5 rounded-2xl neu-button text-flow-text-primary text-base font-bold flex items-center justify-center shadow-xl hover:scale-[1.02] transition-all"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full neu-button text-flow-text-primary text-base font-bold flex items-center justify-center shadow-xl hover:scale-[1.02] transition-all min-h-[48px]"
             >
               <span>Explore The Narrative</span>
             </button>
@@ -99,10 +99,10 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Tactile state switch pill */}
-            <div className="flex items-center p-1 rounded-xl neu-pressed">
+            <div className="flex items-center p-1 rounded-full neu-pressed">
               <button
                 onClick={() => setDemoState('flow')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
                   demoState === 'flow'
                     ? 'neu-raised text-flow-accent shadow-sm'
                     : 'text-flow-text-secondary hover:text-flow-text-primary'
@@ -112,7 +112,7 @@ export const HeroSection: React.FC = () => {
               </button>
               <button
                 onClick={() => setDemoState('chaos')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
                   demoState === 'chaos'
                     ? 'neu-raised text-rose-500 shadow-sm'
                     : 'text-flow-text-secondary hover:text-flow-text-primary'
@@ -150,7 +150,7 @@ export const HeroSection: React.FC = () => {
                   </div>
 
                   <Link href="/app?action=focus" className="shrink-0">
-                    <button className="w-full sm:w-auto px-4 py-2 rounded-xl neu-button text-xs font-bold text-flow-text-primary flex items-center justify-center gap-1.5 shadow-md">
+                    <button className="w-full sm:w-auto px-5 py-2.5 rounded-full neu-button text-xs font-bold text-flow-text-primary flex items-center justify-center gap-1.5 shadow-md">
                       <Play className="w-3.5 h-3.5 fill-current text-flow-accent" />
                       <span>Start Focus</span>
                     </button>
@@ -173,7 +173,7 @@ export const HeroSection: React.FC = () => {
                 {chaosFragments.map((item, idx) => (
                   <div
                     key={idx}
-                    className={`p-3 rounded-xl neu-flat border ${item.color} flex items-center justify-between text-xs font-semibold`}
+                    className={`p-3 rounded-full neu-flat border ${item.color} flex items-center justify-between text-xs font-semibold px-4`}
                   >
                     <span className="truncate pr-2 text-flow-text-primary">{item.text}</span>
                     <span className="text-[10px] opacity-75 shrink-0">{item.time}</span>

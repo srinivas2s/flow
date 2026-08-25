@@ -35,11 +35,11 @@ export const FinalCTAScene: React.FC = () => {
           Your next move is already waiting.
         </p>
 
-        {/* Symmetric White/Ivory Neumorphic Button without arrow */}
+        {/* Smooth Corner Capsule Rectangle Neumorphic Button */}
         <div className="mt-10 w-full max-w-xs">
           <Link href="/app" className="block w-full">
             <button
-              className="w-full py-4 rounded-2xl neu-button text-flow-text-primary text-base font-black flex items-center justify-center shadow-2xl hover:scale-[1.02] transition-all"
+              className="w-full py-4 rounded-full neu-button text-flow-text-primary text-base font-black flex items-center justify-center shadow-2xl hover:scale-[1.02] transition-all min-h-[50px]"
             >
               <span>Enter FLOW</span>
             </button>

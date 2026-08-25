@@ -37,9 +37,6 @@ export const NextMoveScene: React.FC = () => {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="w-full max-w-lg neu-card p-6 sm:p-9 border border-flow-border/80 relative overflow-hidden shadow-2xl"
       >
-        {/* Accent top gradient stripe */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-flow-accent via-indigo-400 to-flow-accent" />
-
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2.5">
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />

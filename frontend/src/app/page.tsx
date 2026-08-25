@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { LandingNavbar } from '@/components/landing/LandingNavbar';
+import { HeroSection } from '@/components/landing/HeroSection';
 import { ChaosScene } from '@/components/landing/ChaosScene';
 import { FlowRevealScene } from '@/components/landing/FlowRevealScene';
 import { AIUnderstandsScene } from '@/components/landing/AIUnderstandsScene';
@@ -16,8 +17,11 @@ export default function LandingPage() {
     <main className="relative min-h-screen bg-flow-bg text-flow-text-primary overflow-x-hidden selection:bg-flow-accent/20">
       <LandingNavbar />
       
-      <div className="pt-16">
-        {/* Scenes 01 & 02: Chaos & The Question */}
+      <div>
+        {/* Hero Section with Interactive State Comparator */}
+        <HeroSection />
+
+        {/* Scene 01 & 02: Chaos & The Question */}
         <ChaosScene />
 
         {/* Scene 03: Meet FLOW Reveal */}
@@ -42,9 +46,11 @@ export default function LandingPage() {
         <FinalCTAScene />
       </div>
 
-      {/* Minimal Footer */}
-      <footer className="w-full py-8 border-t border-flow-border/40 text-center text-xs text-flow-muted">
-        <p>© 2026 FLOW. Focus • Logic • Orchestration • Workflow. Built for cognitive clarity.</p>
+      {/* Minimalist Footer */}
+      <footer className="w-full py-10 border-t border-flow-border/50 text-center text-xs text-flow-muted px-4">
+        <p className="font-semibold text-flow-text-primary mb-1">FLOW</p>
+        <p>Focus • Logic • Orchestration • Workflow</p>
+        <p className="text-[11px] text-flow-muted mt-2">© 2026 FLOW. Built for cognitive clarity and human execution.</p>
       </footer>
     </main>
   );
